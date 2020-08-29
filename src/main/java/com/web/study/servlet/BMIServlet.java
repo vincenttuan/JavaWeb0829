@@ -16,13 +16,20 @@ public class BMIServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        // 參數檢查
+        if(req.getParameter("name") == null || 
+                req.getParameter("h") == null || req.getParameter("w") == null) {
+            out.println("請輸入參數(例如:?name=john&h=170&w=60)");
+            return;
+        }
+            
         // 取得參數 "?name=john&h=170&w=60"
         String name = req.getParameter("name");
         double h = Double.parseDouble(req.getParameter("h"));
         double w = Double.parseDouble(req.getParameter("w"));
         double bmi = w / Math.pow(h/100, 2);
         // 回應資料
-        PrintWriter out = resp.getWriter();
         out.print(String.format("%s <p>身高: %.1f <p>體重: %.1f <p>BMI = %.2f<p>", name, h, w, bmi));
         if(bmi > 23) {
             out.print("過重");
