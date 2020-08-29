@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "bmiservlet", urlPatterns = {"/servlet/bmi"})
 public class BMIServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    
+    private void doHandler(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
@@ -40,5 +39,17 @@ public class BMIServlet extends HttpServlet {
         }
         
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandler(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandler(req, resp);
+    }
+    
+    
     
 }
