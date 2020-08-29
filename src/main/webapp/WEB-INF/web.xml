@@ -8,6 +8,17 @@
         <servlet-name>MyGenericServlet</servlet-name>
         <url-pattern>/servlet/my_generic_servlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LottoServlet</servlet-name>
+        <servlet-class>com.web.study.servlet.LottoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LottoServlet</servlet-name>
+        <url-pattern>/servlet/lotto</url-pattern>
+    </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30
