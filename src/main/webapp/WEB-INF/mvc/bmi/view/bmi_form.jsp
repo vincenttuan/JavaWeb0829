@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,12 +15,12 @@
                 身高: <input type="number" placeholder="請輸入身高" id="height" name="height" /><p />
                 體重: <input type="number" placeholder="請輸入體重" id="weight" name="weight" /><p />
                 性別: <input type="radio" value="1" id="sex" name="sex">&nbsp;男&nbsp;&nbsp;
-                     <input type="radio" value="2" id="sex" name="sex">&nbsp;女<p />
+                <input type="radio" value="2" id="sex" name="sex">&nbsp;女<p />
                 <button type="submit" class="pure-button pure-button-primary">儲存並計算</button>
                 <button type="reset" class="pure-button pure-button-primary">重置</button>
             </fieldset>
         </form>
-        ${bmis}
+
         <table class="pure-table pure-table-bordered">
             <thead>
                 <tr>
@@ -32,14 +32,16 @@
                 </tr>
             </thead>
             <tbody>
+            <c:forEach var="bmi" items="${bmis}">
                 <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
+                    <td>${bmi.id}</td>
+                    <td>${bmi.height}</td>
+                    <td>${bmi.weight}</td>
+                    <td>${bmi.sex}</td>
+                    <td>${bmi.bmi}</td>
                 </tr>
-            </tbody>
-        </table>
-    </body>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
 </html>
