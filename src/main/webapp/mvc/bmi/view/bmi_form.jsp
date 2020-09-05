@@ -7,13 +7,14 @@
         <title>BMI Page</title>
     </head>
     <body style="padding: 20px">
-        <form class="pure-form">
+        <form class="pure-form" method="post" action="/JavaWeb0829/mvc/bmi">
             <fieldset>
                 <legend>BMI form</legend>
-                序號: <input type="number" placeholder="請輸入序號" /><p />
-                身高: <input type="number" placeholder="請輸入身高" /><p />
-                體重: <input type="number" placeholder="請輸入體重" /><p />
-                性別: <input type="radio" value="1">&nbsp;男&nbsp;&nbsp;<input type="radio" value="2">&nbsp;女<p />
+                序號: <input type="number" placeholder="請輸入序號" id="_id" name="_id" /><p />
+                身高: <input type="number" placeholder="請輸入身高" id="height" name="height" /><p />
+                體重: <input type="number" placeholder="請輸入體重" id="weight" name="weight" /><p />
+                性別: <input type="radio" value="1" id="sex" name="sex">&nbsp;男&nbsp;&nbsp;
+                     <input type="radio" value="2" id="sex" name="sex">&nbsp;女<p />
                 <button type="submit" class="pure-button pure-button-primary">儲存並計算</button>
                 <button type="reset" class="pure-button pure-button-primary">重置</button>
             </fieldset>
