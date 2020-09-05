@@ -45,15 +45,23 @@
                 </tr>
             </thead>
             <%if (emps != null) {%>
+            <%int total = 0;%>
             <tbody>
                 <%for(Map<String, String> emp : emps) {%>
                 <tr>
                     <td><% out.print(emp.get("empName")); %></td>
-                    <td><%=emp.get("empSalary") %></td>
-                    <td><%=emp.get("empSex") %></td>
-                    <td><%=emp.get("empType") %></td>
+                    <td><%=String.format("%,d", Integer.parseInt(emp.get("empSalary"))) %></td>
+                    <td><%=emp.get("empSex").equals("1")?"男":"女" %></td>
+                    <td><%=emp.get("empType")==null?"":"V" %></td>
                 </tr>
+                <%total = total + Integer.parseInt(emp.get("empSalary")); %>
                 <%}%>
+                <tr>
+                    <td></td>
+                    <td><%=String.format("%,d", total) %></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
             <%}%>
         </table>
