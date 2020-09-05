@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach var="bmi" items="${bmis}">
+                <c:forEach var="bmi" items="${bmis}">
                 <tr>
                     <td>${bmi.id}</td>
                     <td>${bmi.height}</td>
@@ -53,7 +53,15 @@
                         </c:if>    
                     </td>
                 </tr>
-            </c:forEach>
+                </c:forEach>
+                <tr>
+                    <td>平均</td>
+                    <td><fmt:formatNumber maxFractionDigits="1" value="${avgHeight}" /></td>
+                    <td><fmt:formatNumber maxFractionDigits="1" value="${avgWeight}" /></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
         </tbody>
     </table>
 </body>

@@ -38,6 +38,8 @@ public class BMIController extends HttpServlet {
         // 重導到 bmi_form.jsp
         List<BMI> bmis = dao.queryAll();
         req.setAttribute("bmis", bmis);
+        req.setAttribute("avgHeight", 0);
+        req.setAttribute("avgWeight", 0);
         doGet(req, resp);
     }
 
