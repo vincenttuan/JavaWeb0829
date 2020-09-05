@@ -30,6 +30,7 @@
                     <th>體重</th>
                     <th>性別</th>
                     <th>BMI</th>
+                    <th>判斷</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,17 @@
                     <td>${bmi.weight}</td>
                     <td>${bmi.sex==1?"男":"女"}</td>
                     <td><fmt:formatNumber maxFractionDigits="2" value="${bmi.bmi}" /></td>
+                    <td>
+                        <c:if test="${bmi.bmi ge 18 and bmi.bmi lt 23}">
+                            正常
+                        </c:if>
+                        <c:if test="${bmi.bmi ge 23}">
+                            過重
+                        </c:if>
+                        <c:if test="${bmi.bmi lt 18}">
+                            過輕
+                        </c:if>    
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
