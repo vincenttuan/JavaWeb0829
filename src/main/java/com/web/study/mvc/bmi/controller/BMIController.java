@@ -26,11 +26,11 @@ public class BMIController extends HttpServlet {
         String weight = req.getParameter("weight");
         String sex = req.getParameter("sex");
         // 建立 BMI 物件
-        BMI bmi = new BMI();
-        bmi.setId(Integer.parseInt(_id));
-        bmi.setHeight(Double.parseDouble(height));
-        bmi.setWeight(Double.parseDouble(weight));
-        bmi.setSex(Integer.parseInt(sex));
+        BMI bmi = new BMI(Integer.parseInt(_id), 
+                          Double.parseDouble(height), 
+                          Double.parseDouble(weight), 
+                          Integer.parseInt(sex));
+        
         // 建立 Dao 物件
         BMIDAO dao = new BMIDAO();
         dao.add(bmi); // 將資料加入
