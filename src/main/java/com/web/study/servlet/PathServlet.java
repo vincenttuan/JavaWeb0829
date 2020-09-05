@@ -15,7 +15,7 @@ public class PathServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        String servletName = req.getServerName();
+        String servletName = getServletName();
         String url = req.getRequestURL().toString();
         String uri = req.getRequestURI().toString();
         String contextPath = req.getContextPath();
