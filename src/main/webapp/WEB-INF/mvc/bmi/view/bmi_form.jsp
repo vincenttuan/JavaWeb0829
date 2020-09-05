@@ -41,17 +41,7 @@
                     <td>${bmi.weight}</td>
                     <td>${bmi.sex==1?"男":"女"}</td>
                     <td><fmt:formatNumber maxFractionDigits="2" value="${bmi.bmi}" /></td>
-                    <td>
-                        <c:if test="${bmi.bmi ge 18 and bmi.bmi lt 23}">
-                            正常
-                        </c:if>
-                        <c:if test="${bmi.bmi ge 23}">
-                            過重
-                        </c:if>
-                        <c:if test="${bmi.bmi lt 18}">
-                            過輕
-                        </c:if>    
-                    </td>
+                    <td>${bmi.result}</td>
                 </tr>
                 </c:forEach>
                 <tr>
