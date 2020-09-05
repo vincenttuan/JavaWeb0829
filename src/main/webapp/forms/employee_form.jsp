@@ -48,7 +48,7 @@
             <tbody>
                 <%for(Map<String, String> emp : emps) {%>
                 <tr>
-                    <td><%=emp.get("empName") %></td>
+                    <td><% out.print(emp.get("empName")); %></td>
                     <td><%=emp.get("empSalary") %></td>
                     <td><%=emp.get("empSex") %></td>
                     <td><%=emp.get("empType") %></td>
