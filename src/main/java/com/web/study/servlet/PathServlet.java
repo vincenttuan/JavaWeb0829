@@ -21,12 +21,12 @@ public class PathServlet extends HttpServlet {
         String contextPath = req.getContextPath();
         String servletPath = req.getServletPath();
         String pathInfo = req.getPathInfo();
-        out.println("servletName: " + servletName);
-        out.println("url: " + url);
-        out.println("uri: " + uri);
-        out.println("contextPath: " + contextPath);
-        out.println("servletPath: " + servletPath);
-        out.println("pathInfo: " + pathInfo);
+        out.println("Servlet Name: " + servletName);
+        out.println("URL: " + url);
+        out.println("URI: " + uri);
+        out.println("Context Path: " + contextPath);
+        out.println("Servlet Path: " + servletPath);
+        out.println("Path Info: " + pathInfo);
     }
     
 }
