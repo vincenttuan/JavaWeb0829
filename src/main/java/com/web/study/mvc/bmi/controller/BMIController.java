@@ -1,6 +1,9 @@
 package com.web.study.mvc.bmi.controller;
 
+import com.web.study.mvc.bmi.model.BMI;
+import com.web.study.mvc.bmi.model.BMIDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +21,24 @@ public class BMIController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("doPost()");
+        String _id = req.getParameter("_id");
+        String height = req.getParameter("height");
+        String weight = req.getParameter("weight");
+        String sex = req.getParameter("sex");
+        // 建立 BMI 物件
+        BMI bmi = new BMI();
+        bmi.setId(Integer.parseInt(_id));
+        bmi.setHeight(Double.parseDouble(height));
+        bmi.setWeight(Double.parseDouble(weight));
+        bmi.setSex(Integer.parseInt(sex));
+        // 建立 Dao 物件
+        BMIDAO dao = new BMIDAO();
+        dao.add(bmi); // 將資料加入
+        
+        // 重導到 bmi_form.jsp
+        List<BMI> bmis = dao.queryAll();
+        req.setAttribute("bmis", bmis);
+        doGet(req, resp);
     }
 
     
