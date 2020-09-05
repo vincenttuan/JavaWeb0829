@@ -26,5 +26,6 @@
                 <button type="submit" class="pure-button pure-button-primary">Add</button>
             </fieldset>
         </form>
+        <%=request.getAttribute("emps") %>
     </body>
 </html>
