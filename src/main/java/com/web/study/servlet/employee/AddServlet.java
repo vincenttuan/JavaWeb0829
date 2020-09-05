@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 public class AddServlet extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //resp.setContentType("text/plain;charset=utf-8");
+        //resp.getWriter().print("此網頁不提供此方法的調用");
+        // 重新導向至 employee_form.jsp
+        resp.sendRedirect("/JavaWeb0829/forms/employee_form.jsp");
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain;charset=utf-8");
         String empName = req.getParameter("empName");
