@@ -19,6 +19,7 @@
                 <button type="reset" class="pure-button pure-button-primary">重置</button>
             </fieldset>
         </form>
+        ${bmis}
         <table class="pure-table pure-table-bordered">
             <thead>
                 <tr>
