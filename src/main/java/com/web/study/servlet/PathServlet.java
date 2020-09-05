@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "pathservlet", urlPatterns = {"/servlet/path"})
+@WebServlet(name = "pathservlet", urlPatterns = {"/servlet/path", "/pathservlet/*", "/*.jsp"})
 public class PathServlet extends HttpServlet {
 
     @Override
