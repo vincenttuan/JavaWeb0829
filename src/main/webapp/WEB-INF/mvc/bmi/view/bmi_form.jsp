@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +39,7 @@
                     <td>${bmi.height}</td>
                     <td>${bmi.weight}</td>
                     <td>${bmi.sex==1?"男":"女"}</td>
-                    <td>${bmi.bmi}</td>
+                    <td><fmt:formatNumber maxFractionDigits="2" value="${bmi.bmi}" /></td>
                 </tr>
             </c:forEach>
         </tbody>
