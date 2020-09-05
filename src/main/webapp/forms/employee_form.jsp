@@ -7,7 +7,7 @@
         <title>Employee Page</title>
     </head>
     <body style="padding: 20px">
-        <form class="pure-form pure-form-stacked">
+        <form class="pure-form pure-form-stacked" method="post" action="/JavaWeb0829/servlet/employee/add">
             <fieldset>
                 <legend>Employee Form</legend>
                 員工 : <select id="empName" name="empName">
