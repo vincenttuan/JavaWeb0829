@@ -37,7 +37,7 @@
                     <td>${bmi.id}</td>
                     <td>${bmi.height}</td>
                     <td>${bmi.weight}</td>
-                    <td>${bmi.sex}</td>
+                    <td>${bmi.sex==1?"男":"女"}</td>
                     <td>${bmi.bmi}</td>
                 </tr>
             </c:forEach>
