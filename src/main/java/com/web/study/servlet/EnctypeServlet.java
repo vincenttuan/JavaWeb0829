@@ -1,6 +1,7 @@
 package com.web.study.servlet;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,12 @@ public class EnctypeServlet extends HttpServlet {
         
         PrintWriter out = resp.getWriter();
         out.print("OK 中文");
+        
+        InputStreamReader isr = new InputStreamReader(req.getInputStream(), "UTF-8");
+        char[] buffer = new char[1];
+        while (isr.read(buffer) != -1) {
+            out.print(buffer);
+        }
     }
     
 }
