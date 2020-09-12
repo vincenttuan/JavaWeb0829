@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>
+                    <td valign="top">
                         <form method="post" class="pure-form" action="/JavaWeb0829/servlet/enctype" enctype="application/x-www-form-urlencoded" target="myiframe">
                             <fieldset>
                                 <legend>預設編碼 : application/x-www-form-urlencoded</legend>
@@ -42,7 +42,7 @@
                         </form>
                     </td>
                     <td valign="top">
-                        <iframe id="myiframe" name="myiframe" width="500"></iframe>
+                        <iframe id="myiframe" name="myiframe" width="500" height="1000"></iframe>
                     </td>
                 </tr>
             </tbody>
