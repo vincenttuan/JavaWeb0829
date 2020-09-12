@@ -11,7 +11,7 @@
             <fieldset>
                 <legend>Upload 上傳圖片</legend>
                 <input type="file" name="myfile1" /><p />
-                <input type="test" placeholder="請輸入圖片名稱" name="desc1" /><p />
+                <input type="text" placeholder="請輸入圖片名稱" name="desc1" /><p />
                 <button type="submit" class="pure-button pure-button-primary">上傳</button>
             </fieldset>
         </form>
