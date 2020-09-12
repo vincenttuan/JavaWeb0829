@@ -2,12 +2,14 @@ package com.web.study.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
 
 @WebServlet(urlPatterns = "/servlet/upload")
 @MultipartConfig(
@@ -42,7 +44,8 @@ public class UploadServlet extends HttpServlet {
                 .filter(part -> part.getName().equals("desc1"))
                 .forEach(part -> {
                     try {
-                        part.getInputStream();
+                        String desc1 = IOUtils.toString(part.getInputStream(), StandardCharsets.UTF_8.name());
+                        out.print(desc1);
                     } catch (Exception e) {
                     }
                 });
