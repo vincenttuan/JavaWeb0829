@@ -22,12 +22,7 @@ public class LongJobServlet extends HttpServlet {
         out.flush();
         
         // LongJob
-        try {
-            Thread.sleep(10000);
-            out.print("很長的工作做完了, 時間: " + new Date() + "<p>");
-            out.flush();
-        } catch (Exception e) {
-        }
+        
         
         out.print("離開 Servlet 的時間: " + new Date() + "<p>");
         out.flush();
