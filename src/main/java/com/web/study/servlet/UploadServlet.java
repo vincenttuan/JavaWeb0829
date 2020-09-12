@@ -26,6 +26,17 @@ public class UploadServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
+        // 分析 part (name = desc1)
+        req.getParts().stream()
+                .filter(part -> part.getName().equals("desc1"))
+                .forEach(part -> {
+                    try {
+                        String desc1 = IOUtils.toString(part.getInputStream(), StandardCharsets.UTF_8.name());
+                        out.print(desc1);
+                    } catch (Exception e) {
+                    }
+                });
+        out.print("<p>");
         // 分析 part (name = myfile1)
         req.getParts().stream()
                 .filter(part -> part.getName().equals("myfile1"))
@@ -40,16 +51,7 @@ public class UploadServlet extends HttpServlet {
                         e.printStackTrace(out);
                     }
                 });
-        // 分析 part (name = desc1)
-        req.getParts().stream()
-                .filter(part -> part.getName().equals("desc1"))
-                .forEach(part -> {
-                    try {
-                        String desc1 = IOUtils.toString(part.getInputStream(), StandardCharsets.UTF_8.name());
-                        out.print(desc1);
-                    } catch (Exception e) {
-                    }
-                });
+        
     }
 
 }
