@@ -23,7 +23,8 @@ public class ImageListJob implements Runnable {
                 File file = new File(path + "/" + name);
                 if (file.isFile()) {
                     String imagePath = "/JavaWeb0829/servlet/image?name=" + name;
-                    out.print("<img width='500' src='" + imagePath + "'><p>");
+                    String imageDeletePath = "/JavaWeb0829/servlet/imagedelete?name=" + name;
+                    out.print("<img width='500' src='" + imagePath + "' ondblclick='window.location.href=\"" + imageDeletePath + "\"'><p>");
                     out.flush();
                 }
             }
