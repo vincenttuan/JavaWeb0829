@@ -26,6 +26,9 @@ public class EnctypeServlet extends HttpServlet {
         while (isr.read(buffer) != -1) {
             out.print(buffer);
         }
+//        out.print("<p><hr>");
+//        out.print("name = " + req.getParameter("name") + "<p>");
+//        out.print("age = " + req.getParameter("age") + "<p>");
     }
     
 }
