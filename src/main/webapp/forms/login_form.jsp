@@ -11,7 +11,7 @@
             <fieldset>
                 <legend>Login Form</legend>
                 <input type="text" placeholder="請輸入使用者名稱" name="username" /><p />
-                <input type="text" placeholder="請輸入使用者密碼" name="password" /><p />
+                <input type="password" placeholder="請輸入使用者密碼" name="password" /><p />
                 <button type="submit" class="pure-button pure-button-primary">確認</button>
             </fieldset>
         </form>

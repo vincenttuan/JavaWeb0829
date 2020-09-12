@@ -15,7 +15,10 @@ public class LoginFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        if(req.getParameter("username") != null && req.getParameter("password") != null) {
+        if(req.getParameter("username") != null && 
+           req.getParameter("password") != null &&
+           req.getParameter("username").trim().length() > 1 &&
+           req.getParameter("password").trim().length() > 1) {
             chain.doFilter(req, resp);
         } else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/forms/login_form.jsp");
