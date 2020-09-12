@@ -13,7 +13,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = "/report/*")
+@WebFilter(urlPatterns = {"/report/*", "/servlet/lotto"})
 public class LoginFilter extends HttpFilter {
     private static String[][] users = {{"admin", "1234"}, {"mary", "1111"}, {"jo", "2222"}};
     

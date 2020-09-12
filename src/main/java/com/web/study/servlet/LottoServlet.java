@@ -13,7 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 public class LottoServlet extends HttpServlet {
 
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandler(req, resp);
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandler(req, resp);
+    }
+    
+    protected void doHandler(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // utf-8 編碼
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
@@ -29,7 +38,6 @@ public class LottoServlet extends HttpServlet {
         // 回應資訊
         PrintWriter out = resp.getWriter();
         out.print(nums);
-        
     }
     
 }
