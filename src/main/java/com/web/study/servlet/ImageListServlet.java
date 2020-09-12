@@ -1,5 +1,6 @@
 package com.web.study.servlet;
 
+import com.web.study.job.ImageListJob;
 import java.io.IOException;
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
@@ -18,7 +19,8 @@ public class ImageListServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         
         AsyncContext ctx = req.startAsync();
-        
+        ImageListJob job = new ImageListJob(ctx);
+        new Thread(job).start();
     }
     
 }
