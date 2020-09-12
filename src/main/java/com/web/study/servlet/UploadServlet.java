@@ -37,6 +37,10 @@ public class UploadServlet extends HttpServlet {
                         e.printStackTrace(out);
                     }
                 });
+        // 分析 part (name = desc1)
+        req.getParts().stream()
+                .filter(part -> part.getName().equals("desc1"))
+                .forEach(part -> {});
     }
 
 }
