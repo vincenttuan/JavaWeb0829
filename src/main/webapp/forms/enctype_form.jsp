@@ -10,8 +10,8 @@
         <form method="post" class="pure-form" action="/JavaWeb0829/servlet/enctype" enctype="application/x-www-form-urlencoded">
             <fieldset>
                 <legend>探討各種表單的編碼(預設編碼 : application/x-www-form-urlencoded)</legend>
-                <input type="text" placeholder="請輸入姓名" name="name" /><p />
-                <input type="number" placeholder="請輸入年齡" name="age" /><p />
+                <input type="text" placeholder="請輸入姓名" name="name" value="王小明" /><p />
+                <input type="number" placeholder="請輸入年齡" name="age" value="18" /><p />
                 <button type="submit" class="pure-button pure-button-primary">傳送</button>
             </fieldset>
         </form>
