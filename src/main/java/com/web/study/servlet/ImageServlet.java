@@ -17,7 +17,7 @@ public class ImageServlet extends HttpServlet {
         String name = req.getParameter("name");
         File file = new File("C:/upload/" + name);
         if(file.exists()) {
-            resp.setContentType("image/*");
+            resp.setContentType("image/png");
             resp.setContentLength((int)file.length());
             Files.copy(file.toPath(), resp.getOutputStream());
         } else {
