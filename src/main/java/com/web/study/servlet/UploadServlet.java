@@ -40,7 +40,12 @@ public class UploadServlet extends HttpServlet {
         // 分析 part (name = desc1)
         req.getParts().stream()
                 .filter(part -> part.getName().equals("desc1"))
-                .forEach(part -> {});
+                .forEach(part -> {
+                    try {
+                        part.getInputStream();
+                    } catch (Exception e) {
+                    }
+                });
     }
 
 }
