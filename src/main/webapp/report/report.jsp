@@ -1,9 +1,3 @@
-<%-- 
-    Document   : report
-    Created on : 2020/9/12, 下午 03:49:32
-    Author     : MB-teacher
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>車況報告</title>
     </head>
-    <body>
+    <body style="padding: 20px">
         <h1>車況報告</h1>
         <table class="pure-table pure-table-bordered">
             <thead>
