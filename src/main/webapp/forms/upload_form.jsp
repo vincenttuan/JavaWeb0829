@@ -16,6 +16,6 @@
             </fieldset>
         </form>
         <hr>
-        <iframe name="myiframe" width="1000" height="1000"></iframe>
+        <iframe frameborder="0" name="myiframe" width="1000" height="1000"></iframe>
     </body>
 </html>

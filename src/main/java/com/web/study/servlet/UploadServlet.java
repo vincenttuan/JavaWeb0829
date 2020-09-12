@@ -45,7 +45,7 @@ public class UploadServlet extends HttpServlet {
                     try {
                         part.write(fname);
                         out.print("Upload OK<p>");
-                        out.print("<img src='/JavaWeb0829/servlet/image?name=" + fname + "'>");
+                        out.print("<img width='500' src='/JavaWeb0829/servlet/image?name=" + fname + "'>");
                     } catch (Exception e) {
                         out.print("Upload Error, " + e);
                         e.printStackTrace(out);
