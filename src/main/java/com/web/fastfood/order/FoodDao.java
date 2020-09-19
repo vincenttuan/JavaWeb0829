@@ -1,5 +1,6 @@
-package com.web.fastfood;
+package com.web.fastfood.order;
 
+import com.web.fastfood.DB;
 import java.util.Map;
 
 public class FoodDao {

@@ -1,4 +1,4 @@
-package com.web.fastfood;
+package com.web.fastfood.order;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
