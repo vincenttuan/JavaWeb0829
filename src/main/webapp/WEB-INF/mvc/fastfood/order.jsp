@@ -12,6 +12,12 @@
                     window.location.href = '/JavaWeb0829/fastfood/submit';
                 }
             }
+            
+            function itemDelete(no) {
+                if(confirm('是否要刪除 no = ' + no + ' 的資料 ?')) {
+                    
+                }
+            }
         </script>
     </head>
     <body style="padding: 20px">
