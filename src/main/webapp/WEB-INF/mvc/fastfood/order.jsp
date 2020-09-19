@@ -9,7 +9,7 @@
     </head>
     <body style="padding: 20px">
         <h1>OOO 您好 ! 請點餐</h1>
-        <form class="pure-form">
+        <form class="pure-form" method="post" action="/JavaWeb0829/fastfood/order">
             <fieldset>
                 <legend>點餐單</legend>
                 主餐: 
