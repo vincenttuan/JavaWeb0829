@@ -34,18 +34,21 @@
                 <legend>點餐單</legend>
                 主餐: 
                 <select name="mainfoods">
+                    <option value="">請選擇</option>
                     <c:forEach var="entry" items="${mainFoods}">
                         <option value="${entry.key}">${entry.key} $${entry.value}</option>
                     </c:forEach>
                 </select><p />
                 副餐: 
                 <select name="secondfoods">
+                    <option value="">請選擇</option>
                     <c:forEach var="entry" items="${secondFoods}">
                         <option value="${entry.key}">${entry.key} $${entry.value}</option>
                     </c:forEach>
                 </select><p />
                 飲料: 
                 <select name="drinks">
+                    <option value="">請選擇</option>
                     <c:forEach var="entry" items="${drinks}">
                         <option value="${entry.key}">${entry.key} $${entry.value}</option>
                     </c:forEach>

@@ -38,23 +38,23 @@ public class OrderServlet extends HttpServlet {
             session.setAttribute("shoppingCar", shoppingCar);
         }
         shoppingCar = (List<Food>)session.getAttribute("shoppingCar");
-        if(mainfoodsName != null) {
+        if(mainfoodsName != null && mainfoodsName.length() > 0) {
             Food food = new Food();
-            food.setNo(shoppingCar.size() + 1);
+            food.setNo(nextShoppingCarOrderNo(shoppingCar));
             food.setName(mainfoodsName);
             food.setPrice(dao.getMainFoodsPrice(mainfoodsName));
             shoppingCar.add(food);
         }
-        if(secondfoodsName != null) {
+        if(secondfoodsName != null && secondfoodsName.length() > 0) {
             Food food = new Food();
-            food.setNo(shoppingCar.size() + 1);
+            food.setNo(nextShoppingCarOrderNo(shoppingCar));
             food.setName(secondfoodsName);
             food.setPrice(dao.getSecondFoodsPrice(secondfoodsName));
             shoppingCar.add(food);
         }
-        if(drinks != null) {
+        if(drinks != null && drinks.length() > 0) {
             Food food = new Food();
-            food.setNo(shoppingCar.size() + 1);
+            food.setNo(nextShoppingCarOrderNo(shoppingCar));
             food.setName(drinks);
             food.setPrice(dao.getDrinksPrice(drinks));
             shoppingCar.add(food);
@@ -78,5 +78,13 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
+    
+    private int nextShoppingCarOrderNo(List<Food> shoppingCar) {
+        if(shoppingCar == null || shoppingCar.size() == 0) {
+            return 1;
+        }
+        int maxNo = shoppingCar.stream().mapToInt(f -> f.getNo()).max().getAsInt();
+        return maxNo + 1;
+    }
     
 }
