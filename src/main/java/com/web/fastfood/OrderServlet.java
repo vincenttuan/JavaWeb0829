@@ -47,16 +47,18 @@ public class OrderServlet extends HttpServlet {
             Food food = new Food();
             food.setNo(shoppingCar.size() + 1);
             food.setName(secondfoodsName);
-            food.setPrice(dao.getMainFoodsPrice(secondfoodsName));
+            food.setPrice(dao.getSecondFoodsPrice(secondfoodsName));
             shoppingCar.add(food);
         }
         if(drinks != null) {
             Food food = new Food();
             food.setNo(shoppingCar.size() + 1);
             food.setName(drinks);
-            food.setPrice(dao.getMainFoodsPrice(drinks));
+            food.setPrice(dao.getDrinksPrice(drinks));
             shoppingCar.add(food);
         }
+        session.setAttribute("shoppingCar", shoppingCar);
+        doGet(req, resp);
     }
     
     @Override
