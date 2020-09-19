@@ -1,4 +1,4 @@
-package com.web.fastfood.order;
+package com.web.fastfood.login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/fastfood/submit")
-public class SubmitServlet extends HttpServlet {
+@WebServlet("/fastfood/logout")
+public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if(session != null) {
-            session.removeAttribute("shoppingCar");
+            session.invalidate(); // session 失效
         }
         resp.sendRedirect("/JavaWeb0829/fastfood/order");
     }
