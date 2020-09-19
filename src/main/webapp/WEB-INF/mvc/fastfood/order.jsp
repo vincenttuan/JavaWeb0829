@@ -15,11 +15,21 @@
                 主餐: 
                 <select name="mainfoods">
                     <c:forEach var="entry" items="${mainFoods}">
-                        <option value="${entry.key}">${entry.value}</option>
+                        <option value="${entry.key}">${entry.key} $${entry.value}</option>
                     </c:forEach>
                 </select><p />
-                副餐: <select name="secondfoods"></select><p />
-                飲料: <select name="drinks"></select><p />
+                副餐: 
+                <select name="secondfoods">
+                    <c:forEach var="entry" items="${secondFoods}">
+                        <option value="${entry.key}">${entry.key} $${entry.value}</option>
+                    </c:forEach>
+                </select><p />
+                飲料: 
+                <select name="drinks">
+                    <c:forEach var="entry" items="${drinks}">
+                        <option value="${entry.key}">${entry.key} $${entry.value}</option>
+                    </c:forEach>
+                </select><p />
                 <button type="submit" class="pure-button pure-button-primary">加入</button>
                 <button type="button" class="pure-button pure-button-primary">結帳</button>
             </fieldset>
