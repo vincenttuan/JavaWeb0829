@@ -50,7 +50,7 @@
                         <c:forEach var="food" items="${sessionScope.shoppingCar}">
                         <tr>
                             <th>${food.no}</th>
-                            <th>${food.name}</th>
+                            <th><img src="/JavaWeb0829/images/fastfood/${food.name}.png" width="50" valign="middle" align="left">${food.name}</th>
                             <th>${food.price}</th>
                             <th>刪除</th>
                         </tr>
