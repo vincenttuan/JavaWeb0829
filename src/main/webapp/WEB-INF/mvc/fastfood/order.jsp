@@ -24,7 +24,7 @@
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
-                            window.location.href = '/JavaWeb0829/fastfood/order';
+                            //window.location.href = '/JavaWeb0829/fastfood/order';
                         }
                     };
                     xhttp.open("DELETE", "/JavaWeb0829/fastfood/order", true);
@@ -62,6 +62,7 @@
                 <button type="submit" class="pure-button pure-button-primary">加入</button>
                 <button type="button" class="pure-button pure-button-primary" onclick="orderSubmit()">結帳</button>
                 <button type="button" class="pure-button pure-button-primary" onclick="logout()">登出</button>
+                <a href="/JavaWeb0829/fastfood/order">重新整理</a>
             </fieldset>
         </form>
         <form class="pure-form">
@@ -83,7 +84,7 @@
                                 <th>${food.no}</th>
                                 <th><img src="/JavaWeb0829/images/fastfood/${food.name}.png" width="50" valign="middle" align="left">${food.name}</th>
                                 <th>${food.price}</th>
-                                <th><a href="javascript:itemDelete(${food.no})">刪除</a></th>
+                                <th><button type="submit" class="pure-button pure-button-primary" onclick="itemDelete(${food.no})">刪除</button></th>
                             </tr>
                             <c:set var="subtotal" value="${subtotal + food.price}" />
                         </c:forEach>

@@ -1,6 +1,7 @@
 package com.web.fastfood.login;
 
 import java.io.IOException;
+import javax.servlet.DispatcherType;
 import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/fastfood/order")
+@WebFilter(urlPatterns = "/fastfood/order", dispatcherTypes = {DispatcherType.REQUEST})
 public class LoginFilter extends HttpFilter {
     private LoginDao dao = new LoginDao();
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+        
         HttpSession session = req.getSession();
         // 判斷是否已經登入過 ?
         if(session.getAttribute("username") != null) {
