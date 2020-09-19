@@ -54,18 +54,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <c:set var="subtotal" value="0" />
                         <c:forEach var="food" items="${sessionScope.shoppingCar}">
-                        <tr>
-                            <th>${food.no}</th>
-                            <th><img src="/JavaWeb0829/images/fastfood/${food.name}.png" width="50" valign="middle" align="left">${food.name}</th>
-                            <th>${food.price}</th>
-                            <th>刪除</th>
-                        </tr>
+                            <tr>
+                                <th>${food.no}</th>
+                                <th><img src="/JavaWeb0829/images/fastfood/${food.name}.png" width="50" valign="middle" align="left">${food.name}</th>
+                                <th>${food.price}</th>
+                                <th><a href="javascript:itemDelete(${food.no})">刪除</a></th>
+                            </tr>
+                            <c:set var="subtotal" value="${subtotal + food.price}" />
                         </c:forEach>
                     </tbody>
                     <thead>
                         <tr>
-                            <th colspan="3" align="right">小計: </th>
+                            <th colspan="2" align="right">小計: </th>
+                            <th><fmt:formatNumber value="${subtotal}" /></th>
                             <th> </th>
                         </tr>
                     </thead>
