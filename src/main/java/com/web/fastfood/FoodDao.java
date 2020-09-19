@@ -20,4 +20,20 @@ public class FoodDao {
                 .get()
                 .getValue();
     }
+    public int getSecondFoodsPrice(String name) {
+        return DB.secondFoods.entrySet()
+                .stream()
+                .filter(e -> e.getKey().equals(name))
+                .findFirst()
+                .get()
+                .getValue();
+    }
+    public int getDrinksPrice(String name) {
+        return DB.drinks.entrySet()
+                .stream()
+                .filter(e -> e.getKey().equals(name))
+                .findFirst()
+                .get()
+                .getValue();
+    }
 }
