@@ -1,6 +1,8 @@
 package com.web.fastfood;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -63,7 +65,19 @@ public class OrderServlet extends HttpServlet {
     
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        resp.getWriter().print("call doDelete()");
+        BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
+        String data = br.readLine();
+        System.out.println(data);
+        int no = Integer.parseInt(data.split("=")[1].trim());
+        HttpSession session = req.getSession(false);
+        if(session != null) {
+            List<Food> shoppingCar = (List<Food>)session.getAttribute("shoppingCar");
+            shoppingCar.remove(shoppingCar.stream()
+                                          .filter(f -> f.getNo() == no)
+                                          .findFirst()
+                                          .get());
+        }
     }
 
     

@@ -19,10 +19,11 @@
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
                             console.log = this.responseText;
+                            window.location.href = '/JavaWeb0829/fastfood/order';
                         }
                     };
-                    xhttp.open("DELETE", "/JavaWeb0829/fastfood/order?no=" + no, true);
-                    xhttp.send();
+                    xhttp.open("DELETE", "/JavaWeb0829/fastfood/order", true);
+                    xhttp.send("no="+no);
                 }
             }
         </script>
