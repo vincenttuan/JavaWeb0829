@@ -2,6 +2,7 @@ package com.web.study.servlet.session;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,12 @@ public class ReadSessionServlet extends HttpServlet {
         if(session != null) {
             out.println("Read session ok !");
             out.println("Session Id: " + session.getId());
+            // 讀取 session attribute 資料
+            Enumeration<String> enums = session.getAttributeNames();
+            while (enums.hasMoreElements()) {
+                String name = enums.nextElement();
+                out.println(name + " : " + session.getAttribute(name));
+            }
         } else {
             out.print("None session !");
         }
