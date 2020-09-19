@@ -47,12 +47,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <c:forEach var="food" items="${sessionScope.shoppingCar}">
                         <tr>
-                            <th> </th>
-                            <th> </th>
-                            <th> </th>
-                            <th> </th>
+                            <th>${food.no}</th>
+                            <th>${food.name}</th>
+                            <th>${food.price}</th>
+                            <th>刪除</th>
                         </tr>
+                        </c:forEach>
                     </tbody>
                     <thead>
                         <tr>
