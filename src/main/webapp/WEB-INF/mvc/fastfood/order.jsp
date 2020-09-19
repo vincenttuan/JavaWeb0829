@@ -6,6 +6,13 @@
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fastfood Order</title>
+        <script>
+            function orderSubmit() {
+                if(confirm('是否要結帳 ?')) {
+                    window.location.href = '/JavaWeb0829/fastfood/submit';
+                }
+            }
+        </script>
     </head>
     <body style="padding: 20px">
         <h1>OOO 您好 ! 請點餐</h1>
@@ -31,7 +38,7 @@
                     </c:forEach>
                 </select><p />
                 <button type="submit" class="pure-button pure-button-primary">加入</button>
-                <button type="button" class="pure-button pure-button-primary">結帳</button>
+                <button type="button" class="pure-button pure-button-primary" onclick="orderSubmit()">結帳</button>
             </fieldset>
         </form>
         <form class="pure-form">
