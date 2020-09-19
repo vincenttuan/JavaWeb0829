@@ -35,9 +35,9 @@ public class OrderServlet extends HttpServlet {
         List<Food> shoppingCar = null;
         if(session.getAttribute("shoppingCar") == null) {
             shoppingCar = new ArrayList<>();
-        } else {
-            shoppingCar = (List<Food>)session.getAttribute("shoppingCar");
+            session.setAttribute("shoppingCar", shoppingCar);
         }
+        shoppingCar = (List<Food>)session.getAttribute("shoppingCar");
         if(mainfoodsName != null) {
             Food food = new Food();
             food.setNo(shoppingCar.size() + 1);
@@ -59,13 +59,11 @@ public class OrderServlet extends HttpServlet {
             food.setPrice(dao.getDrinksPrice(drinks));
             shoppingCar.add(food);
         }
-        session.setAttribute("shoppingCar", shoppingCar);
         doGet(req, resp);
     }
     
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("call doDelete()");
         BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
         String data = br.readLine();
         System.out.println(data);
