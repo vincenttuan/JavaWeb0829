@@ -14,7 +14,14 @@ public class ReadSessionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    
+        HttpSession session = req.getSession(false);
+        PrintWriter out = resp.getWriter();
+        if(session != null) {
+            out.println("Read session ok !");
+            out.println("Session Id: " + session.getId());
+        } else {
+            out.print("None session !");
+        }
     }
     
 }
