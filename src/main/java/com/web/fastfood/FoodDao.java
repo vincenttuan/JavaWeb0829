@@ -12,4 +12,12 @@ public class FoodDao {
     public Map<String, Integer> getDrinks() {
         return DB.drinks;
     }
+    public int getMainFoodsPrice(String name) {
+        return DB.mainFoods.entrySet()
+                .stream()
+                .filter(e -> e.getKey().equals(name))
+                .findFirst()
+                .get()
+                .getValue();
+    }
 }
