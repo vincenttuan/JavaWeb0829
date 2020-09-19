@@ -7,6 +7,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fastfood Order</title>
         <script>
+            function logout() {
+                if (confirm('是否要登出 ?')) {
+                    window.location.href = '/JavaWeb0829/fastfood/logout';
+                }
+            }
+            
             function orderSubmit() {
                 if (confirm('是否要結帳 ?')) {
                     window.location.href = '/JavaWeb0829/fastfood/submit';
@@ -55,6 +61,7 @@
                 </select><p />
                 <button type="submit" class="pure-button pure-button-primary">加入</button>
                 <button type="button" class="pure-button pure-button-primary" onclick="orderSubmit()">結帳</button>
+                <button type="button" class="pure-button pure-button-primary" onclick="logout()">登出</button>
             </fieldset>
         </form>
         <form class="pure-form">
