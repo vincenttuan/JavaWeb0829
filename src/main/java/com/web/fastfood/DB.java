@@ -4,10 +4,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DB {
+    public static final Map<String, String> users = new LinkedHashMap<>();
+    
     public static final Map<String, Integer> mainFoods = new LinkedHashMap<>();
     public static final Map<String, Integer> secondFoods = new LinkedHashMap<>();
     public static final Map<String, Integer> drinks = new LinkedHashMap<>();
+    
     static {
+        users.put("John", "1234");
+        users.put("Mary", "5678");
+        
         mainFoods.put("big_mac", 70);
         mainFoods.put("double_beef", 80);
         mainFoods.put("fish", 50);
