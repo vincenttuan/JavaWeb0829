@@ -8,14 +8,21 @@
         <title>Fastfood Order</title>
         <script>
             function orderSubmit() {
-                if(confirm('是否要結帳 ?')) {
+                if (confirm('是否要結帳 ?')) {
                     window.location.href = '/JavaWeb0829/fastfood/submit';
                 }
             }
-            
+
             function itemDelete(no) {
-                if(confirm('是否要刪除 no = ' + no + ' 的資料 ?')) {
-                    
+                if (confirm('是否要刪除 no = ' + no + ' 的資料 ?')) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            console.log = this.responseText;
+                        }
+                    };
+                    xhttp.open("DELETE", "/JavaWeb0829/fastfood/order?no=" + no, true);
+                    xhttp.send();
                 }
             }
         </script>
