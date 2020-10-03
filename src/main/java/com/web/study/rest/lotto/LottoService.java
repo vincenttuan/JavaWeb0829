@@ -2,11 +2,13 @@ package com.web.study.rest.lotto;
 
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("lotto")
@@ -20,6 +22,15 @@ public class LottoService {
     @Produces("text/html")
     public String readAll() {
         return lottos.toString();
+    }
+    
+    // uri: /rest/lotto/1
+    @Path("{id}")
+    @GET
+    @Produces("text/html")
+    public String read(@PathParam("id") Integer id) {
+        Optional<Lotto> lo = lottos.stream().filter(lotto -> lotto.getId() == id).findAny();
+        return lo.isPresent() ? lo.toString() : "Not found!";
     }
     
     // uri: /rest/lotto/
