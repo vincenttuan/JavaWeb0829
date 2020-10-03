@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 public class StudentService {
     private Set<Student> students = new LinkedHashSet<>();
     
+    // uri: /rest/student/
     @Path("/")
     @GET
     @Produces("application/json")
@@ -29,6 +30,7 @@ public class StudentService {
         }
     }
     
+    // uri: /rest/student/1
     @Path("{id}")
     @GET
     @Produces("application/json")
@@ -42,6 +44,15 @@ public class StudentService {
         }
     }
     
+    /*
+    uri: /rest/student/
+    Json 格式
+    {
+        "id": 1,
+        "name": "John",
+        "score": 90
+    }
+    */
     @Path("/")
     @POST
     @Consumes("application/json")
