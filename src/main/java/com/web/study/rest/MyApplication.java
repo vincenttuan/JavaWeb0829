@@ -15,5 +15,14 @@ public class MyApplication extends Application {
         classes.add(BMIService.class);
         return classes;
     }
+
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> set = new LinkedHashSet<>();
+        set.add(new CountSingleTonService());
+        return set;
+    }
+    
+    
     
 }
