@@ -23,18 +23,18 @@ public class LottoService {
     // uri: /rest/lotto/
     @Path("/")
     @GET
-    @Produces("text/html")
-    public String readAll() {
-        return lottos.toString();
+    @Produces("application/json")
+    public Set<Lotto> readAll() {
+        return lottos;
     }
 
     // uri: /rest/lotto/1
     @Path("{id}")
     @GET
-    @Produces("text/html")
-    public String read(@PathParam("id") Integer id) {
+    @Produces("application/json")
+    public Lotto read(@PathParam("id") Integer id) {
         Optional<Lotto> lo = lottos.stream().filter(lotto -> lotto.getId() == id).findAny();
-        return lo.isPresent() ? lo.toString() : "Not found!";
+        return lo.isPresent() ? lo.get() : null;
     }
 
     // uri: /rest/lotto/
