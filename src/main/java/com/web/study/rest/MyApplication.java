@@ -13,6 +13,7 @@ public class MyApplication extends Application {
         Set<Class<?>> classes = new LinkedHashSet<>();
         classes.add(HelloService.class);
         classes.add(BMIService.class);
+        //classes.add(CountSingleTonService.class);
         return classes;
     }
 

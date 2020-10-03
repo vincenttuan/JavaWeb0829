@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 public class CountSingleTonService {
     private int count;
     
+    // uri: /rest/count/add
     @Path("add")
     @GET
     @Produces("text/plain")
