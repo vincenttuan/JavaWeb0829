@@ -86,8 +86,9 @@ public class StudentService {
     public Response update(@PathParam("id") Integer id, Student student) {
         Optional<Student> st = students.stream().filter(s -> s.getId() == id).findFirst();
         if(st.isPresent()) {
-            st.get().setName(student.getName());
-            st.get().setScore(student.getScore());
+            Student oStudent = st.get();
+            oStudent.setName(student.getName());
+            oStudent.setScore(student.getScore());
             Message message = new Message(200, "Update success !");
             return Response.ok().entity(message).encoding("utf-8").build();
         } else {
