@@ -1,5 +1,6 @@
 package com.web.study.rest;
 
+import com.web.study.rest.lotto.LottoService;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class MyApplication extends Application {
     public Set<Object> getSingletons() {
         Set<Object> set = new LinkedHashSet<>();
         set.add(new CountSingleTonService());
+        set.add(new LottoService());
         return set;
     }
 
