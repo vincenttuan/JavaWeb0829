@@ -1,12 +1,12 @@
 package com.web.study.rest.lotto;
 
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -45,7 +45,23 @@ public class LottoService {
         lottos.add(lotto);
         return "Lotto add OK";
     }
-
+    
+    // uri: /rest/lotto/1
+    @Path("{id}")
+    @PUT
+    @Produces("text/html")
+    public String update(@PathParam("id") Integer id, @Context Application app) {
+        Optional<Lotto> lo = lottos.stream().filter(lotto -> lotto.getId() == id).findAny();
+        if(lo.isPresent()) {
+            Lotto newLotto = genLotto(app);
+            lo.get().setNums(newLotto.getNums());
+            return "Lotto update OK";
+        } else {
+            return "id: " + id + " not found";
+        }
+    }
+    
+    
     private Lotto genLotto(Application app) {
         Integer[] args = (Integer[])app.getProperties().get("lotto");
         int size = args[0];
