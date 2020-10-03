@@ -155,7 +155,7 @@
             }
         </script>
     </head>
-    <body style="padding: 20px">
+    <body style="padding: 20px" onload="readStudent()">
 
         <form id="student_form" class="pure-form">
             <fieldset>
