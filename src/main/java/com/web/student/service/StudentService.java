@@ -14,7 +14,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-
+/*
+GET http://localhost:8080/JavaWeb0829/rest/student/
+GET http://localhost:8080/JavaWeb0829/rest/student/1
+POST http://localhost:8080/JavaWeb0829/rest/student/
+    {
+        "id": 1,
+        "name": "John",
+        "score": 90
+    }
+PUT http://localhost:8080/JavaWeb0829/rest/student/1
+    {
+        "id": 1,
+        "name": "John",
+        "score": 70
+    }
+DELETE http://localhost:8080/JavaWeb0829/rest/student/1
+*/
 @Path("student")
 public class StudentService {
     private Set<Student> students = new LinkedHashSet<>();
