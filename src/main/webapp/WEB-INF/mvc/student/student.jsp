@@ -6,6 +6,41 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student CRUD Page</title>
         <script>
+            function updateStudent() {
+                // 抓取表單資料
+                var id = document.getElementById("id").value;
+                var name = document.getElementById("name").value;
+                var score = document.getElementById("score").value;
+                // 建立物件
+                var st = new Object();
+                st.id = id * 1;
+                st.name = name;
+                st.score = score * 1;
+                // 將物件 st 轉 json 字串
+                var jsonstring = JSON.stringify(st);
+
+                // 傳送到指定的地方: /JavaWeb0829/rest/student/
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        var jo = JSON.parse(this.responseText); // 將文字資料轉成 json 物件
+                        switch (this.status) {
+                            case 200:
+                                readStudent();
+                                alert(jo.text);
+                                break;
+                            case 400:
+                                alert(jo.text);
+                                break;
+                        }
+                    }
+                }
+                var uri = '/JavaWeb0829/rest/student/' + id;
+                xhttp.open('PUT', uri, true);
+                xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
+                xhttp.send(jsonstring);
+
+            }
             function addStudent() {
                 // 抓取表單資料
                 var id = document.getElementById("id").value;
