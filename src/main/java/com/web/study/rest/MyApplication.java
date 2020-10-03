@@ -1,6 +1,8 @@
 package com.web.study.rest;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -22,6 +24,14 @@ public class MyApplication extends Application {
         Set<Object> set = new LinkedHashSet<>();
         set.add(new CountSingleTonService());
         return set;
+    }
+
+    @Override
+    public Map<String, Object> getProperties() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("max", 10);
+        map.put("min", 0);
+        return map;
     }
     
     
