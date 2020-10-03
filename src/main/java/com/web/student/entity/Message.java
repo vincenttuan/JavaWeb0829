@@ -4,6 +4,14 @@ public class Message {
     private int code;
     private String text;
 
+    public Message(int code, String text) {
+        this.code = code;
+        this.text = text;
+    }
+
+    public Message() {
+    }
+
     public int getCode() {
         return code;
     }
