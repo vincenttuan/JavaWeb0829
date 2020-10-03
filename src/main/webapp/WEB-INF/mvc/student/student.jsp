@@ -13,9 +13,9 @@
                 var score = document.getElementById("score").value;
                 // 建立物件
                 var st = new Object();
-                st.id = id;
+                st.id = id*1;
                 st.name = name;
-                st.score = score;
+                st.score = score*1;
                 // 將物件 st 轉 json 字串
                 var jsonstring = JSON.stringify(st);
                 
