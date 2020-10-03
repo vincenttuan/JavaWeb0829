@@ -24,4 +24,13 @@ public class HelloService {
     public String hello(@PathParam("name") String name) {
         return "Hello " + name;
     }
+    
+    // uri: /rest/hello/10/20
+    @Path("{x}/{y}")
+    @GET
+    @Produces("text/plain")
+    public String add(@PathParam("x") Integer x, @PathParam("y") Integer y) {
+        return "Sum: " + (x + y);
+    }
+    
 }
