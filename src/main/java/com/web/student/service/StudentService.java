@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.web.student.service;
 
-/**
- *
- * @author MB-teacher
- */
+import javax.ws.rs.Path;
+
+@Path("student")
 public class StudentService {
     
 }
