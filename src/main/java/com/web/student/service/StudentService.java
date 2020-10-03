@@ -5,7 +5,9 @@ import com.web.student.entity.Student;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -36,6 +38,21 @@ public class StudentService {
             return Response.ok().entity(st.get()).encoding("utf-8").build();
         } else {
             Message message = new Message(400, String.format("id: %d not fount", id));
+            return Response.status(message.getCode()).entity(message).encoding("utf-8").build();
+        }
+    }
+    
+    @Path("/")
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response create(Student student) {
+        if(student != null) {
+            students.add(student);
+            Message message = new Message(200, "create success !");
+            return Response.ok().entity(message).encoding("utf-8").build();
+        } else {
+            Message message = new Message(400, "No data (create error) !");
             return Response.status(message.getCode()).entity(message).encoding("utf-8").build();
         }
     }
