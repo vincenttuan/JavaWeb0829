@@ -33,6 +33,7 @@ public class MyApplication extends Application {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("max", 10);
         map.put("min", 0);
+        map.put("lotto", new Integer[]{5, 39});
         return map;
     }
     

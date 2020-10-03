@@ -10,12 +10,15 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Context;
 
 @Path("lotto")
 public class LottoService {
+
     private Set<Lotto> lottos = new LinkedHashSet<>();
     private int id;
-    
+
     // uri: /rest/lotto/
     @Path("/")
     @GET
@@ -23,7 +26,7 @@ public class LottoService {
     public String readAll() {
         return lottos.toString();
     }
-    
+
     // uri: /rest/lotto/1
     @Path("{id}")
     @GET
@@ -32,23 +35,30 @@ public class LottoService {
         Optional<Lotto> lo = lottos.stream().filter(lotto -> lotto.getId() == id).findAny();
         return lo.isPresent() ? lo.toString() : "Not found!";
     }
-    
+
     // uri: /rest/lotto/
     @Path("/")
     @POST
     @Produces("text/html")
-    public String create() {
+    public String create(@Context Application app) {
+        Lotto lotto = genLotto(app);
+        lottos.add(lotto);
+        return "Lotto add OK";
+    }
+
+    private Lotto genLotto(Application app) {
+        Integer[] args = (Integer[])app.getProperties().get("lotto");
+        int size = args[0];
+        int max = args[1];
         Set<Integer> nums = new LinkedHashSet<>();
-        while (nums.size() < 5) {
-            int num = new Random().nextInt(39) + 1;
+        while (nums.size() < size) {
+            int num = new Random().nextInt(max) + 1;
             nums.add(num);
         }
         Lotto lotto = new Lotto();
         lotto.setId(++id);
         lotto.setNums(nums);
-        
-        lottos.add(lotto);
-        return "Lotto add OK";
+        return lotto;
     }
-    
+
 }
