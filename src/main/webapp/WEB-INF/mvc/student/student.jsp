@@ -66,12 +66,11 @@
             }
             function addStudent() {
                 // 抓取表單資料
-                var id = document.getElementById("id").value;
                 var name = document.getElementById("name").value;
                 var score = document.getElementById("score").value;
                 // 建立物件
                 var st = new Object();
-                st.id = id * 1;
+                st.id = 0;
                 st.name = name;
                 st.score = score * 1;
                 // 將物件 st 轉 json 字串
@@ -144,7 +143,7 @@
         <form id="student_form" class="pure-form">
             <fieldset>
                 <legend>Student CRUD</legend>
-                ID : <input type="text" id="id" name="id" placeholder="請輸入ID" /><p/>
+                ID : <input type="text" id="id" name="id" readonly /><p/>
                 Name : <input type="text" id="name" name="name" placeholder="請輸入名字" /><p/>
                 Score : <input type="number" id="score" name="score" placeholder="請輸入分數" /><p/>
                 <button type="button" id="add_button"    onclick="addStudent()"    class="pure-button pure-button-primary">新增</button>
