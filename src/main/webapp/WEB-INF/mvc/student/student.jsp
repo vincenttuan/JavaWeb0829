@@ -16,8 +16,7 @@
                         var jo = JSON.parse(this.responseText); // 將文字資料轉成 json 物件
                         switch (this.status) {
                             case 200:
-                                showTable(jo);
-                                break;
+                                readStudent();
                             case 400:
                                 alert(jo.text);
                                 break;
@@ -50,8 +49,6 @@
                         switch (this.status) {
                             case 200:
                                 readStudent();
-                                alert(jo.text);
-                                break;
                             case 400:
                                 alert(jo.text);
                                 break;
@@ -84,8 +81,6 @@
                         switch (this.status) {
                             case 200:
                                 readStudent();
-                                alert(jo.text);
-                                break;
                             case 400:
                                 alert(jo.text);
                                 break;
