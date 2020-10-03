@@ -6,6 +6,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student CRUD Page</title>
         <script>
+            function deleteStudent(id) {
+                if(!confirm('確定要刪除 id = ' + id + ' 的資料嗎 ?')) {
+                    return;
+                }
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        var jo = JSON.parse(this.responseText); // 將文字資料轉成 json 物件
+                        switch (this.status) {
+                            case 200:
+                                showTable(jo);
+                                break;
+                            case 400:
+                                alert(jo.text);
+                                break;
+                        }
+                    }
+                }
+                var uri = '/JavaWeb0829/rest/student/' + id;
+                xhttp.open('DELETE', uri, true);
+                xhttp.send();
+            }
+            
             function updateStudent() {
                 // 抓取表單資料
                 var id = document.getElementById("id").value;
