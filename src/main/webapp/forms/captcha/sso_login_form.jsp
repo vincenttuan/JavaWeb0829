@@ -14,13 +14,23 @@
     </head>
     <body style="padding: 20px">
         <form class="pure-form" id="demo-form" method="post" action="${pageContext.request.contextPath}/captcha/sso/login">
-            <legend>SSO Login Form</legend>
+            <legend>SSO Login 登入</legend>
             <input type="text" placeholder="請輸入 Username" name="username"/><p/>
             <input type="password" placeholder="請輸入 Password" name="password"/><p/>
             <button class="g-recaptcha pure-button pure-button-primary" 
                     data-sitekey="${captcha_client_key}" 
                     data-callback='onSubmit' 
-                    data-action='submit'>Submit</button>
+                    data-action='submit'>登入</button>
+        </form>
+        <hr>
+        <form class="pure-form" id="demo-form" method="post" action="${pageContext.request.contextPath}/captcha/sso/new/member">
+            <legend>SSO Login 建立使用者</legend>
+            <input type="text" placeholder="請輸入 Username" name="username"/><p/>
+            <input type="text" placeholder="請輸入 Password" name="password"/><p/>
+            <button class="g-recaptcha pure-button pure-button-primary" 
+                    data-sitekey="${captcha_client_key}" 
+                    data-callback='onSubmit' 
+                    data-action='submit'>建立</button>
         </form>
     </body>
 </html>
