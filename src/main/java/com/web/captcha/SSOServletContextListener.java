@@ -9,6 +9,8 @@ public class SSOServletContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        sce.getServletContext().setAttribute("captcha_verify_url", "https://www.google.com/recaptcha/api/siteverify");
+        sce.getServletContext().setAttribute("captcha_remoteip", "localhost");
         sce.getServletContext().setAttribute("captcha_client_key", "6Lf_JtYZAAAAAEIE8pIOhd_yIwvaV2gTrsf7vhPX");
         sce.getServletContext().setAttribute("captcha_server_key", "6Lf_JtYZAAAAAKYtDPaFi-d8gWe-M7L3TejxS5Pa");
     }

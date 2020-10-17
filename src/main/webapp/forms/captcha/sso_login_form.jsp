@@ -14,7 +14,7 @@
     <body>
         <form id="demo-form" method="post" action="${pageContext.request.contextPath}/captcha/sso/login">
             <button class="g-recaptcha" 
-                    data-sitekey="6Lf_JtYZAAAAAEIE8pIOhd_yIwvaV2gTrsf7vhPX" 
+                    data-sitekey="${captcha_client_key}" 
                     data-callback='onSubmit' 
                     data-action='submit'>Submit</button>
         </form>
