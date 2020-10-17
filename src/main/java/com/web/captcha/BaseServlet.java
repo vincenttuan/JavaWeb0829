@@ -8,6 +8,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Base64;
@@ -43,10 +44,11 @@ public class BaseServlet extends HttpServlet {
     protected boolean newMember(String username, String password) {
         // 將 password 進行 base64 編碼
         password = Base64.getEncoder().encodeToString(password.getBytes());
-        String sql = "INSERT INTO Member(username, password) VALUES('%s', '%s')";
-        sql = String.format(sql, username, password);
-        try(Statement stmt = conn.createStatement();) {
-            int count = stmt.executeUpdate(sql);
+        String sql = "INSERT INTO Member(username, password) VALUES(?, ?)";
+        try(PreparedStatement stmt = conn.prepareStatement(sql);) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            int count = stmt.executeUpdate();
             return count > 0 ? true : false;
         } catch (Exception e) {
             e.printStackTrace();
