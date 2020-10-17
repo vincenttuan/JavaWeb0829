@@ -12,9 +12,9 @@
         </script>
     </head>
     <body>
-        <form id="demo-form">
+        <form id="demo-form" method="post" action="${pageContext.request.contextPath}/captcha/sso/login">
             <button class="g-recaptcha" 
-                    data-sitekey="reCAPTCHA_site_key" 
+                    data-sitekey="6Lf_JtYZAAAAAEIE8pIOhd_yIwvaV2gTrsf7vhPX" 
                     data-callback='onSubmit' 
                     data-action='submit'>Submit</button>
         </form>
