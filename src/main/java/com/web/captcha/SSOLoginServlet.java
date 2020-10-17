@@ -14,6 +14,12 @@ public class SSOLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String grr = req.getParameter("g-recaptcha-response");
         resp.getWriter().print(grr);
+        // 驗證 CAPTCHA
+        String url = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s";
+        String secret = "6Lf_JtYZAAAAAKYtDPaFi-d8gWe-M7L3TejxS5Pa";
+        String response = grr;
+        String remoteip = "localhost";
+        
     }
     
 }
