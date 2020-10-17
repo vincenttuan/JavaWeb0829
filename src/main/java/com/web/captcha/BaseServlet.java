@@ -10,10 +10,13 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.dbutils.BasicRowProcessor;
+import org.apache.commons.dbutils.handlers.MapListHandler;
 
 public class BaseServlet extends HttpServlet {
     private static Connection conn;
@@ -26,6 +29,21 @@ public class BaseServlet extends HttpServlet {
             conn = DriverManager.getConnection(dburl, dbuser, dbpwd);
         } catch (Exception e) {
         }
+    }
+    
+    protected List<Map<String, Object>> getMember(String username) {
+        String sql = "SELECT username, password FROM Member WHERE username='%s'";
+        sql = String.format(sql, username);
+        try(Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);) {
+            // ResultSet集合 -> List<Map<String, Object>>
+            BasicRowProcessor convert = new BasicRowProcessor();
+            MapListHandler handler = new MapListHandler(convert);
+            return handler.handle(rs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
     protected boolean checkLogin(String username, String password) {
