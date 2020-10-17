@@ -6,5 +6,6 @@
     </head>
     <body>
         <h1>Hello ${sessionScope.username}</h1>
+        ${members}
     </body>
 </html>
