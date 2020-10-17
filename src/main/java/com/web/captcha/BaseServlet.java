@@ -5,12 +5,43 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Map;
 import java.util.Scanner;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 public class BaseServlet extends HttpServlet {
+    private static Connection conn;
+    static {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            String dburl = "jdbc:derby://localhost:1527/web";
+            String dbuser = "app";
+            String dbpwd = "app";
+            conn = DriverManager.getConnection(dburl, dbuser, dbpwd);
+        } catch (Exception e) {
+        }
+    }
+    
+    protected boolean checkLogin(String username, String password) {
+        String sql = "SELECT username, password FROM Member WHERE username='%s' and password='%s'";
+        sql = String.format(sql, username, password);
+        try(Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);) {
+            if(rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+    
     protected boolean checkCaptcha(HttpServletRequest req) throws MalformedURLException, IOException {
         return checkCaptcha(req.getParameter("g-recaptcha-response"));
     }
