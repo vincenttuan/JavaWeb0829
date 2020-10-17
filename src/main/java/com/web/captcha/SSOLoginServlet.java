@@ -25,7 +25,7 @@ public class SSOLoginServlet extends HttpServlet {
         // 取得 CAPTCHA 回應碼
         String url      = getServletContext().getAttribute("captcha_verify_url") + "?secret=%s&response=%s&remoteip=%s";
         String secret   = getServletContext().getAttribute("captcha_server_key").toString();
-        String remoteip = getServletContext().getAttribute("remoteip").toString();
+        String remoteip = getServletContext().getAttribute("captcha_remoteip").toString();
         url = String.format(url, secret, grr, remoteip);
         String json = new Scanner(new URL(url).openStream()).useDelimiter("\\A").next();
         resp.getWriter().print(json);
