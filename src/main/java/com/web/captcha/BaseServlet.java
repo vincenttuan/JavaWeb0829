@@ -36,7 +36,7 @@ public class BaseServlet extends HttpServlet {
     }
     
     protected void forward(HttpServletRequest req, HttpServletResponse resp, String path) throws IOException, ServletException {
-        RequestDispatcher rd = req.getServletContext().getNamedDispatcher(path);
+        RequestDispatcher rd = req.getServletContext().getRequestDispatcher(path);
         rd.forward(req, resp);
     }
     
