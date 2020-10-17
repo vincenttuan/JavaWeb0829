@@ -48,6 +48,7 @@ public class SSOLoginServlet extends BaseServlet {
         alreadyLoginMembers.add(username);
         forward(req, resp, "/captcha/sso/view/member");
         // resp.sendRedirect("/JavaWeb0829/captcha/sso/view/member"); // GET
+        System.out.println(alreadyLoginMembers);
     }
     
 }
