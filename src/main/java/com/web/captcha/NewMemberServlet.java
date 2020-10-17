@@ -21,22 +21,16 @@ public class NewMemberServlet extends BaseServlet {
             return;
         }
         
-        // 2. 驗證 username, password
+        // 2. 檢查 username 是否已經被註冊 ?
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        boolean checkLogin = checkLogin(username, password);
-        if(!checkLogin) {
-            resp.getWriter().print("Login: " + checkLogin);
+        if(getMember(username).size() > 0) {
+            resp.getWriter().print(username + "已被註冊");
             return;
         }
         
-        // 3. 登入成功
-        resp.getWriter().print("Login success !");
-        HttpSession session = req.getSession(true);
-        session.setAttribute("username", username);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/captcha/sso/view/member");
-        rd.forward(req, resp);
-        // resp.sendRedirect("/JavaWeb0829/captcha/sso/view/member"); // GET
+        // 3. 加入到 Member 資料表中
+        
     }
     
 }

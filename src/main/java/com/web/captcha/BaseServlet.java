@@ -10,6 +10,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -29,6 +30,20 @@ public class BaseServlet extends HttpServlet {
             conn = DriverManager.getConnection(dburl, dbuser, dbpwd);
         } catch (Exception e) {
         }
+    }
+    
+    protected boolean newMember(String username, String password) {
+        // 將 password 進行 base64 編碼
+        password = Base64.getEncoder().encodeToString(password.getBytes());
+        String sql = "INSERT INTO Member(username, password) VALUES('%s', '%s')";
+        sql = String.format(sql, username, password);
+        try(Statement stmt = conn.createStatement();) {
+            int count = stmt.executeUpdate(sql);
+            return count > 0 ? true : false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     protected List<Map<String, Object>> getMember(String username) {
