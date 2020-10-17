@@ -1,6 +1,7 @@
 package com.web.captcha;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,8 @@ public class ViewMemberServlet extends BaseServlet {
     private void doHandler(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         String username = session.getAttribute("username") + "";
-        resp.getWriter().print("Hello " + username);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/mvc/sso/view_member.jsp");
+        rd.forward(req, resp);
     }
     
     @Override
