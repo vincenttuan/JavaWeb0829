@@ -30,7 +30,12 @@ public class NewMemberServlet extends BaseServlet {
         }
         
         // 3. 加入到 Member 資料表中
-        
+        boolean check = newMember(username, password);
+        if(check) {
+            resp.getWriter().print("新增成功");
+        } else {
+            resp.getWriter().print("新增失敗");
+        }
     }
     
 }
