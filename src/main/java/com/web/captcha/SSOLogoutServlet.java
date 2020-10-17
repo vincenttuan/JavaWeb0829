@@ -18,8 +18,8 @@ public class SSOLogoutServlet extends BaseServlet {
             req.setAttribute("result", "登出失敗: 無登入資訊");
         } else {
             String username = session.getAttribute("username") + "";
-            session.removeAttribute("username");
-            
+            //session.removeAttribute("username");
+            session.invalidate();
             req.setAttribute("result", username + " 已登出");
         }
         forward(req, resp, "/forms/captcha/sso_login_form.jsp");
