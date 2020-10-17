@@ -14,6 +14,7 @@ public class ViewMemberServlet extends BaseServlet {
     private void doHandler(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         String username = session.getAttribute("username") + "";
+        
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/mvc/sso/view_member.jsp");
         rd.forward(req, resp);
     }
