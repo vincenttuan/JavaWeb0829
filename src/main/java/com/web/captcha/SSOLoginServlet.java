@@ -45,6 +45,7 @@ public class SSOLoginServlet extends BaseServlet {
         resp.getWriter().print("Login success !");
         HttpSession session = req.getSession(true);
         session.setAttribute("username", username);
+        alreadyLoginMembers.add(username);
         forward(req, resp, "/captcha/sso/view/member");
         // resp.sendRedirect("/JavaWeb0829/captcha/sso/view/member"); // GET
     }
