@@ -44,6 +44,11 @@ public class SSOLoginServlet extends BaseServlet {
         // 4. 登入成功
         resp.getWriter().print("Login success !");
         HttpSession session = req.getSession(true);
+        
+        // 刪除之前未登出的 username
+        String preUsername = session.getAttribute("username") + "";
+        alreadyLoginMembers.remove(preUsername);
+        
         session.setAttribute("username", username);
         alreadyLoginMembers.add(username);
         forward(req, resp, "/captcha/sso/view/member");
