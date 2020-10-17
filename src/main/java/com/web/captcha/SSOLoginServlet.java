@@ -1,17 +1,10 @@
 package com.web.captcha;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jdk.nashorn.api.scripting.URLReader;
 
 @WebServlet("/captcha/sso/login")
 public class SSOLoginServlet extends BaseServlet {
@@ -20,7 +13,25 @@ public class SSOLoginServlet extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         boolean checkCaptcher = checkCaptcha(req);
-        resp.getWriter().print(checkCaptcher);
+        // 1. 驗證 captcher
+        if(!checkCaptcher) {
+            resp.getWriter().print("Captcher: " + checkCaptcher);
+            return;
+        }
+        
+        // 2. 驗證 username, password
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        boolean checkLogin = checkLogin(username, password);
+        if(!checkLogin) {
+            resp.getWriter().print("Login: " + checkLogin);
+            return;
+        }
+        
+        // 3. 登入成功
+        resp.getWriter().print("Login success !");
+        
+        
     }
     
 }
