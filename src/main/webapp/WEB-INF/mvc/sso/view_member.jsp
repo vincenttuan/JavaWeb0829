@@ -26,5 +26,6 @@
                 </c:forEach>
             </tbody>
         </table>
+        <button class="pure-button pure-button-primary" type="button" onclick="window.location.href='${pageContext.request.contextPath}/forms/captcha/sso_login_form.jsp'">回登入</button>
     </body>
 </html>
