@@ -1,10 +1,12 @@
 package com.web.captcha;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/captcha/sso/login")
 public class SSOLoginServlet extends BaseServlet {
@@ -30,8 +32,10 @@ public class SSOLoginServlet extends BaseServlet {
         
         // 3. 登入成功
         resp.getWriter().print("Login success !");
-        
-        
+        HttpSession session = req.getSession(true);
+        session.setAttribute("username", username);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/captcha/sso/view/member");
+        rd.forward(req, resp);
     }
     
 }
