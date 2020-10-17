@@ -36,6 +36,7 @@ public class SSOLoginServlet extends BaseServlet {
         session.setAttribute("username", username);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/captcha/sso/view/member");
         rd.forward(req, resp);
+        // resp.sendRedirect("/JavaWeb0829/captcha/sso/view/member"); // GET
     }
     
 }
