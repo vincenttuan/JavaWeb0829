@@ -18,7 +18,7 @@ public class NewMemberServlet extends BaseServlet {
         // 1. 驗證 captcher
         if(!checkCaptcher) {
             req.setAttribute("result", "Captcher: " + checkCaptcher);
-            forward(req, resp, "/forms/captcher/sso_login_new.jsp");
+            forward(req, resp, "/forms/captcha/sso_login_new.jsp");
             return;
         }
         
@@ -27,7 +27,7 @@ public class NewMemberServlet extends BaseServlet {
         String password = req.getParameter("password");
         if(getMember(username).size() > 0) {
             req.setAttribute("result", username + "已被註冊");
-            forward(req, resp, "/forms/captcher/sso_login_new.jsp");
+            forward(req, resp, "/forms/captcha/sso_login_new.jsp");
             return;
         }
         
@@ -35,10 +35,10 @@ public class NewMemberServlet extends BaseServlet {
         boolean check = newMember(username, password);
         if(check) {
             req.setAttribute("result", username + " 新增成功, 請登入");
-            forward(req, resp, "/forms/captcher/sso_login_form.jsp");
+            forward(req, resp, "/forms/captcha/sso_login_form.jsp");
         } else {
             req.setAttribute("result", username + " 新增失敗");
-            forward(req, resp, "/forms/captcher/sso_login_new.jsp");
+            forward(req, resp, "/forms/captcha/sso_login_new.jsp");
         }
         
     }
