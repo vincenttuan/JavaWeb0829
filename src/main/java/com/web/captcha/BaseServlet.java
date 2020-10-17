@@ -8,9 +8,11 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Scanner;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 public class BaseServlet extends HttpServlet {
-    protected boolean checkCaptcha(String grr) throws MalformedURLException, IOException {
+    protected boolean checkCaptcha(HttpServletRequest req) throws MalformedURLException, IOException {
+        String grr = req.getParameter("g-recaptcha-response");
         System.out.println(grr);
         // 取得 CAPTCHA 回應碼
         String url      = getServletContext().getAttribute("captcha_verify_url") + "?secret=%s&response=%s&remoteip=%s";

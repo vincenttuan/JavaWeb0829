@@ -19,8 +19,8 @@ public class SSOLoginServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
-        String grr = req.getParameter("g-recaptcha-response");
-        resp.getWriter().print(checkCaptcha(grr));
+        boolean checkCaptcher = checkCaptcha(req);
+        resp.getWriter().print(checkCaptcher);
     }
     
 }
