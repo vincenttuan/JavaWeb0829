@@ -57,10 +57,10 @@ public class BaseServlet extends HttpServlet {
     }
     
     protected List<Map<String, Object>> getMember(String username) {
-        String sql = "SELECT username, password FROM Member WHERE username='%s'";
-        sql = String.format(sql, username);
-        try(Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);) {
+        String sql = "SELECT username, password FROM Member WHERE username=?";
+        try(PreparedStatement stmt = conn.prepareStatement(sql);) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
             // ResultSet集合 -> List<Map<String, Object>>
             BasicRowProcessor convert = new BasicRowProcessor();
             MapListHandler handler = new MapListHandler(convert);
@@ -74,10 +74,11 @@ public class BaseServlet extends HttpServlet {
     protected boolean checkLogin(String username, String password) {
         // 將 password 進行 base64 編碼
         password = Base64.getEncoder().encodeToString(password.getBytes()); 
-        String sql = "SELECT username, password FROM Member WHERE username='%s' and password='%s'";
-        sql = String.format(sql, username, password);
-        try(Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);) {
+        String sql = "SELECT username, password FROM Member WHERE username=? and password=?";
+        try(PreparedStatement stmt = conn.prepareStatement(sql);) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
                 return true;
             }
