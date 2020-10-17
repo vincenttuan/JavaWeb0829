@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 public class SSOLogoutServlet extends BaseServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if(session.getAttribute("username") == null) {
             req.setAttribute("result", "登出失敗: 無登入資訊");
