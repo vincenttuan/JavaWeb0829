@@ -62,6 +62,8 @@ public class BaseServlet extends HttpServlet {
     }
     
     protected boolean checkLogin(String username, String password) {
+        // 將 password 進行 base64 編碼
+        password = Base64.getEncoder().encodeToString(password.getBytes()); 
         String sql = "SELECT username, password FROM Member WHERE username='%s' and password='%s'";
         sql = String.format(sql, username, password);
         try(Statement stmt = conn.createStatement();
