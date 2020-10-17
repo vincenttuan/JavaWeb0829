@@ -23,6 +23,7 @@
                     data-action='submit'>登入</button>
             <button class="pure-button pure-button-primary" type="button" onclick="window.location.href='${pageContext.request.contextPath}/forms/captcha/sso_login_new.jsp'">建立</button>
             <button class="pure-button pure-button-primary" type="button"  onclick="window.location.href='${pageContext.request.contextPath}/captcha/sso/view/member'">檢視</button>
+            <button class="pure-button pure-button-primary" type="button"  onclick="window.location.href='${pageContext.request.contextPath}/captcha/sso/logout'">登出</button>
         </form>
         <font color="red">${result}</font>
     </body>
