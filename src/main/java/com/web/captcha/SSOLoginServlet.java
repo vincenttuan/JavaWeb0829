@@ -1,7 +1,10 @@
 package com.web.captcha;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +31,16 @@ public class SSOLoginServlet extends HttpServlet {
         resp.getWriter().print(json);
         resp.getWriter().print("<hr>");
         // 驗證 CAPTCHA
+        Gson gson = new Gson();
+        // Map<String, Object>
+        Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
+        boolean success = Boolean.parseBoolean(map.get("success").toString());
+        double score = 0;
+        if(success) {
+            score = Double.parseDouble(map.get("score").toString());
+        }
+        boolean check = success && score > 0.7 ? true : false;
+        resp.getWriter().print("Check CAPTCHA: " + check);
     }
     
 }
