@@ -14,8 +14,11 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
@@ -30,6 +33,11 @@ public class BaseServlet extends HttpServlet {
             conn = DriverManager.getConnection(dburl, dbuser, dbpwd);
         } catch (Exception e) {
         }
+    }
+    
+    protected void forward(HttpServletRequest req, HttpServletResponse resp, String path) throws IOException, ServletException {
+        RequestDispatcher rd = req.getServletContext().getNamedDispatcher(path);
+        rd.forward(req, resp);
     }
     
     protected boolean newMember(String username, String password) {

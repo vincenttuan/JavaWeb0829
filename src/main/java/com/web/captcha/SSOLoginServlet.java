@@ -17,7 +17,8 @@ public class SSOLoginServlet extends BaseServlet {
         boolean checkCaptcher = checkCaptcha(req);
         // 1. 驗證 captcher
         if(!checkCaptcher) {
-            resp.getWriter().print("Captcher: " + checkCaptcher);
+            req.setAttribute("result", "Captcher: " + checkCaptcher);
+            forward(req, resp, "/forms/captcher/sso_login_form.jsp");
             return;
         }
         
@@ -26,7 +27,8 @@ public class SSOLoginServlet extends BaseServlet {
         String password = req.getParameter("password");
         boolean checkLogin = checkLogin(username, password);
         if(!checkLogin) {
-            resp.getWriter().print("Login: " + checkLogin);
+            req.setAttribute("result", "Login: " + checkLogin);
+            forward(req, resp, "/forms/captcher/sso_login_form.jsp");
             return;
         }
         
