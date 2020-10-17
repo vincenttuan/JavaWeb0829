@@ -17,9 +17,8 @@ public class SSOLoginServlet extends HttpServlet {
         // 驗證 CAPTCHA
         String url = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s";
         String secret = "6Lf_JtYZAAAAAKYtDPaFi-d8gWe-M7L3TejxS5Pa";
-        String response = grr;
         String remoteip = "localhost";
-        
+        url = String.format(url, secret, grr, remoteip);
     }
     
 }
