@@ -19,13 +19,15 @@ public class SSOLoginServlet extends HttpServlet {
         String grr = req.getParameter("g-recaptcha-response");
         resp.getWriter().print(grr);
         resp.getWriter().print("<hr>");
-        // 驗證 CAPTCHA
+        // 取得 CAPTCHA 回應碼
         String url = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s";
         String secret = "6Lf_JtYZAAAAAKYtDPaFi-d8gWe-M7L3TejxS5Pa";
         String remoteip = "localhost";
         url = String.format(url, secret, grr, remoteip);
         String json = new Scanner(new URL(url).openStream()).useDelimiter("\\A").next();
         resp.getWriter().print(json);
+        resp.getWriter().print("<hr>");
+        // 驗證 CAPTCHA
     }
     
 }
