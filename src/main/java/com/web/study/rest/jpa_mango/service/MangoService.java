@@ -14,7 +14,7 @@ import javax.ws.rs.core.Context;
 
 @Path("mango")
 public class MangoService {
-    // uri: /rest/lotto/
+    // uri: /rest/mango/customers
     @Path("/customers")
     @GET
     @Produces("application/json")
