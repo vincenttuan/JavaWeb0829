@@ -34,9 +34,9 @@ public class CreatePerson extends HttpServlet {
         // 新增一筆 Person 紀錄
         // 建立交易模式
         EntityTransaction et = em.getTransaction();
-        et.begin();
+        et.begin(); // 交易開始
         em.persist(person); // 將 person 加入
-        et.commit(); // 提交
+        et.commit(); // 交易提交
         em.close();
         out.print(person + " 建立成功");
     }
