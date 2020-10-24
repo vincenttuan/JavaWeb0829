@@ -70,7 +70,7 @@
         </script>
     </head>
     <body style="padding: 20px" onload="readCustomer()">
-        <form class="pure-form" method="post" action="/WebSecure/mango/buy">
+        <form class="pure-form">
             <table>
                 <tr>
                     <td valign="top"><img border=0 width="300" src="/JavaWeb0829/images/mango.jpg" /></td>
@@ -80,7 +80,7 @@
                             <input type="text" placeholder="姓名" name="name" id="name" /><p />
                             <input type="text" placeholder="性別" name="sex" id="sex"  /><p />
                             <input type="number" placeholder="數量" name="amount" id="amount" /><p />
-                            <button type="submit" class="pure-button pure-button-primary">Buy</button>
+                            <button type="button" class="pure-button pure-button-primary" onclick="addCustomer()">Buy</button>
                         </fieldset>
                     </td>
                 </tr>
