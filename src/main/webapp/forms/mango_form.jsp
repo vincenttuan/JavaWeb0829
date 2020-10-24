@@ -7,6 +7,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mango</title>
         <script>
+            function addCustomer() {
+                // 抓取表單資料
+                var name = document.getElementById("name").value;
+                var sex = document.getElementById("sex").value;
+                var amount = document.getElementById("amount").value;
+                
+                // 建立物件
+                var ct = new Object();
+                ct.id = 0;
+                ct.name = name;
+                ct.sex = sex;
+                ct.amount = amount;
+                // 將物件 st 轉 json 字串
+                var jsonstring = JSON.stringify(ct);
+                // 傳送到指定的地方: /JavaWeb0829/rest/mango/customer
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        alert('新增成功:' + this.responseText);
+                        readCustomer();
+                    }
+                }
+                xhttp.open('POST', '/JavaWeb0829/rest/mango/customer', true);
+                xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
+                xhttp.send(jsonstring);
+
+            }
+            
             function readCustomer() {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -49,9 +77,9 @@
                     <td valign="top">
                         <fieldset>
                             <legend>Mango</legend>
-                            <input type="text" placeholder="姓名" name="name" /><p />
-                            <input type="text" placeholder="性別" name="sex"  /><p />
-                            <input type="number" placeholder="數量" name="amount" /><p />
+                            <input type="text" placeholder="姓名" name="name" id="name" /><p />
+                            <input type="text" placeholder="性別" name="sex" id="sex"  /><p />
+                            <input type="number" placeholder="數量" name="amount" id="amount" /><p />
                             <button type="submit" class="pure-button pure-button-primary">Buy</button>
                         </fieldset>
                     </td>
