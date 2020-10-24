@@ -20,11 +20,12 @@ import javax.ws.rs.core.Response;
 @Path("mango")
 public class MangoService {
     // http://localhost:8080/JavaWeb0829/rest/mango/customers
-    @Path("customers")
+    @Path("customer")
     @POST
     @Consumes("application/json")
     @Produces("application/json")
     public String create(Customer customer, @Context HttpServletRequest req) {
+        System.out.println(customer);
         EntityManager em = getEntityManager(req);
         EntityTransaction et = em.getTransaction();
         et.begin(); // 交易開始

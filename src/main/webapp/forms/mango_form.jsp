@@ -15,9 +15,8 @@
                 
                 // 建立物件
                 var ct = new Object();
-                ct.id = 0;
                 ct.name = name;
-                ct.sex = sex;
+                ct.sex = sex==1?true:false;
                 ct.amount = amount;
                 // 將物件 st 轉 json 字串
                 var jsonstring = JSON.stringify(ct);
