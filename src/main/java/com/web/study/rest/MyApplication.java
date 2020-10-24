@@ -1,5 +1,6 @@
 package com.web.study.rest;
 
+import com.web.study.rest.jpa_mango.MangoService;
 import com.web.student.service.StudentService;
 import com.web.study.rest.lotto.LottoService;
 import java.util.LinkedHashMap;
@@ -17,6 +18,7 @@ public class MyApplication extends Application {
         Set<Class<?>> classes = new LinkedHashSet<>();
         classes.add(HelloService.class);
         classes.add(BMIService.class);
+        classes.add(MangoService.class);
         return classes;
     }
 
