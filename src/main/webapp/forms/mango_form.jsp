@@ -6,8 +6,42 @@
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mango</title>
+        <script>
+            function readCustomer() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        var jo = JSON.parse(this.responseText); // 將文字資料轉成 json 物件
+                        showTable(jo);
+                    }
+                }
+                xhttp.open('GET', '/JavaWeb0829/rest/mango/customers', true);
+                xhttp.send();
+            }
+            function showTable(jo) {
+                // 清空
+                var lens = document.getElementById("customer_table").rows.length;
+                for (var i = 0; i < lens; i++) {
+                    document.getElementById("customer_table").deleteRow(0);
+                }
+                var table = document.getElementById("customer_table");
+                for (var i = 0; i < jo.length; i++) {
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell1.innerHTML = jo[i].id;
+                    cell2.innerHTML = jo[i].name;
+                    cell3.innerHTML = jo[i].sex;
+                    cell4.innerHTML = jo[i].amount;
+                    cell5.innerHTML = jo[i].ts;
+                }
+            }
+        </script>
     </head>
-    <body style="padding: 20px">
+    <body style="padding: 20px" onload="readCustomer()">
         <form class="pure-form" method="post" action="/WebSecure/mango/buy">
             <table>
                 <tr>
@@ -35,14 +69,8 @@
                     <th>TS</th>
                 </tr>
             </thead>
-            <tbody>
-                <c:forEach var="map" items="${list}">
-                <tr>
-                    <c:forEach var="m" items="${map}">
-                        <td>${m.value}</td>
-                    </c:forEach>    
-                </tr>
-                </c:forEach>
+            <tbody id="customer_table">
+                
             </tbody>
         </table>                
     </body>
