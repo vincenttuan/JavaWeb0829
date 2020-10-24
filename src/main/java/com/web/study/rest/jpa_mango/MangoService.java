@@ -12,7 +12,7 @@ import javax.ws.rs.core.Context;
 
 @Path("mango")
 public class MangoService {
-    
+    // http://localhost:8080/JavaWeb0829/rest/mango/customers
     @Path("customers")
     @GET
     @Produces("application/json")
