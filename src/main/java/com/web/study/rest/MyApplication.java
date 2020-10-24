@@ -18,7 +18,6 @@ public class MyApplication extends Application {
         Set<Class<?>> classes = new LinkedHashSet<>();
         classes.add(HelloService.class);
         classes.add(BMIService.class);
-        classes.add(MangoService.class);
         return classes;
     }
 
@@ -28,6 +27,7 @@ public class MyApplication extends Application {
         set.add(new CountSingleTonService());
         set.add(new LottoService());
         set.add(new StudentService());
+        set.add(new MangoService());
         return set;
     }
 
