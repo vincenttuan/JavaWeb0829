@@ -24,7 +24,7 @@
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4) {
-                        alert('新增成功:' + this.responseText);
+                        alert('新增回報:' + this.responseText);
                         readCustomer();
                     }
                 }

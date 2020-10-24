@@ -3,6 +3,7 @@ package com.web.study.rest.jpa_mango;
 import com.web.student.entity.Message;
 import com.web.student.entity.Student;
 import com.web.study.rest.jpa_mango.entity.Customer;
+import com.web.study.rest.jpa_mango.entity.Mango;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -27,12 +28,19 @@ public class MangoService {
     public String create(Customer customer, @Context HttpServletRequest req) {
         System.out.println(customer);
         EntityManager em = getEntityManager(req);
-        EntityTransaction et = em.getTransaction();
-        et.begin(); // 交易開始
-        em.persist(customer); // 將 customer 加入
-        et.commit(); // 交易提交
-        em.close();
-        return "OK";
+        // 確認數量
+        Mango mango = (Mango)em.createNamedQuery("Mango.Remain.Amount").getSingleResult();
+        System.out.println(mango);
+        if(mango.getAmount() >= customer.getAmount()) {
+            EntityTransaction et = em.getTransaction();
+            et.begin(); // 交易開始
+            em.persist(customer); // 將 customer 加入
+            et.commit(); // 交易提交
+            em.close();
+            return "OK";
+        } else {
+            return "餘量不足, 尚有庫存:" + mango.getAmount();
+        }
     }
     
     // http://localhost:8080/JavaWeb0829/rest/mango/customers
