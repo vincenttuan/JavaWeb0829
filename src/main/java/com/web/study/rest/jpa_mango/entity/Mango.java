@@ -12,9 +12,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "mango")
-@NamedQueries({
-    @NamedQuery(name = "Mango.Remain.Amount", query = "SELECT id, amount-(SELECT SUM(amount) FROM Customer) as amount FROM MANGO")
-})
 public class Mango implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
