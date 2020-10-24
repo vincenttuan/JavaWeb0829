@@ -3,6 +3,7 @@ package com.web.study.jpa.crud;
 import com.web.study.jpa.entity.Person;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -35,7 +36,16 @@ public class QueryPerson extends HttpServlet {
         query.setParameter("age", 15);        
         out.print(query.getResultList());
         out.print("<hr>");
-        
+        // 使用 NamedQuery 1
+        List<Person> list = em.createNamedQuery("Person.findAll").getResultList();
+        out.print(list);
+        out.print("<hr>");
+        // 使用 NamedQuery 2
+        list = em.createNamedQuery("Person.findByAge")
+                .setParameter("age", 15)
+                .getResultList();
+        out.print(list);
+        out.print("<hr>");
         em.close();
     }
     
