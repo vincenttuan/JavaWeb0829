@@ -66,5 +66,10 @@ public class Person implements Serializable {
     public void setTs(Date ts) {
         this.ts = ts;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", name=" + name + ", age=" + age + ", ts=" + ts + '}';
+    }
     
 }
