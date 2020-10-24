@@ -26,13 +26,15 @@ public class QueryPerson extends HttpServlet {
         // 取得 EntityManager
         EntityManager em = emf.createEntityManager();
         // 全部查詢
-        //Query query = em.createQuery("SELECT p FROM Person p");
+        Query query = em.createQuery("SELECT p FROM Person p");
+        out.print(query.getResultList());
+        out.print("<hr>");
         // 帶入條件查詢
         String sql = "SELECT p FROM Person p WHERE p.age >= :age";
-        Query query = em.createQuery(sql);
-        query.setParameter("age", 15);
-        
+        query = em.createQuery(sql);
+        query.setParameter("age", 15);        
         out.print(query.getResultList());
+        out.print("<hr>");
     }
     
 }
