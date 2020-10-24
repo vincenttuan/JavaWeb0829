@@ -35,6 +35,8 @@ public class QueryPerson extends HttpServlet {
         query.setParameter("age", 15);        
         out.print(query.getResultList());
         out.print("<hr>");
+        
+        em.close();
     }
     
 }

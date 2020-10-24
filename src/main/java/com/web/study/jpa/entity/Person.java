@@ -1,7 +1,5 @@
 package com.web.study.jpa.entity;
 
-// id, name, age, ts
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -9,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Person")
+@NamedQueries({
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
+    @NamedQuery(name = "Person.findByAge", query = "SELECT p FROM Person p WHERE p.age >= :age"),
+})
 public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
