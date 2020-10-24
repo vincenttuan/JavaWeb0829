@@ -1,7 +1,6 @@
 package com.web.study.rest;
 
 import com.web.student.service.StudentService;
-import com.web.study.rest.jpa_mango.service.MangoService;
 import com.web.study.rest.lotto.LottoService;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -27,7 +26,6 @@ public class MyApplication extends Application {
         set.add(new CountSingleTonService());
         set.add(new LottoService());
         set.add(new StudentService());
-        set.add(new MangoService());
         return set;
     }
 
