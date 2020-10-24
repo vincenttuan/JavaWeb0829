@@ -29,9 +29,10 @@ public class MangoService {
         System.out.println(customer);
         EntityManager em = getEntityManager(req);
         // 確認數量
-        Mango mango = (Mango)em.createNamedQuery("Mango.Remain.Amount").getSingleResult();
-        System.out.println(mango);
-        if(mango.getAmount() >= customer.getAmount()) {
+        String sql = "SELECT amount-(SELECT SUM(amount) FROM Customer) FROM Mango";
+        // 剩餘庫存
+        int remainAmount = Integer.parseInt(em.createNativeQuery(sql).getSingleResult()+"");
+        if(remainAmount >= customer.getAmount()) {
             EntityTransaction et = em.getTransaction();
             et.begin(); // 交易開始
             em.persist(customer); // 將 customer 加入
@@ -39,8 +40,9 @@ public class MangoService {
             em.close();
             return "OK";
         } else {
-            return "餘量不足, 尚有庫存:" + mango.getAmount();
+            return "餘量不足, 尚有庫存:" + remainAmount;
         }
+  
     }
     
     // http://localhost:8080/JavaWeb0829/rest/mango/customers
