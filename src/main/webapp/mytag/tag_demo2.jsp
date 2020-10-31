@@ -11,8 +11,9 @@
             <t:hello /><p />
             <t:hello name="Vincent" /><p />
             <t:bmi h="170" w="60" /><p />
+            <jsp:useBean id="random" class="java.util.Random" scope="page" />
             <t:lotto count="5">
-                10
+                ${random.nextInt(50)}
             </t:lotto>
         </h1>
     </body>
