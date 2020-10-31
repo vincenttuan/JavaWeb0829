@@ -55,7 +55,6 @@ public class BmiTag implements Tag {
             String result = (bmi>23)?"過重":(bmi<=18)?"過輕":"正常";
             String data = String.format("h: %.1f w: %.1f bmi: %.2f (%s)", h, w, bmi, result);
             out.print(data);
-            
             out.print(new Date());
         } catch (IOException ex) {
             
