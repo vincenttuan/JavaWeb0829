@@ -28,4 +28,14 @@
           <rtexprvalue>true</rtexprvalue>
       </attribute>
   </tag>
+  <tag>
+      <name>lotto</name>
+      <tag-class>com.web.tag.LottoTag</tag-class>
+      <body-content>jsp</body-content>
+      <attribute>
+          <name>count</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+      </attribute>
+  </tag>
 </taglib>
