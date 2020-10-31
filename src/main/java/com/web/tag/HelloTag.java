@@ -12,6 +12,7 @@ import javax.servlet.jsp.tagext.Tag;
 public class HelloTag implements Tag {
     private PageContext pageContext;
     private Tag parentTag;
+    private String name;
     @Override
     public void setPageContext(PageContext pc) {
         pageContext = pc;
@@ -27,12 +28,21 @@ public class HelloTag implements Tag {
         return parentTag;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public int doStartTag() throws JspException {
         // code
         JspWriter out = pageContext.getOut();
         try {
             out.print("Hello ");
+            out.print(name + " ");
             out.print(new Date());
         } catch (IOException ex) {
             
