@@ -14,8 +14,8 @@ public class HelloServer {
     }
     @OnMessage
     public String onMessage(String message, Session session) {
-        System.out.println("message ==> " + session.getId() + " 說: " + message);
-        return "Server 收到: " + message;
+        System.out.println("id=" + session.getId() + " 說: " + message);
+        return "id=" + session.getId() + " 說: " + message;
     }
     @OnClose
     public void onClose(Session session) {
