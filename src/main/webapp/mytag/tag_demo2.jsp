@@ -14,7 +14,10 @@
             <jsp:useBean id="random" class="java.util.Random" scope="page" />
             <t:lotto count="5">
                 ${random.nextInt(50)}
-            </t:lotto>
+            </t:lotto><p />
+            <t:search key="s">
+            she sell sea shell on the sea shore
+            </t:search>
         </h1>
     </body>
 </html>
