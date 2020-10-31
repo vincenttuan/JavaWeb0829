@@ -10,6 +10,7 @@
         <h1>
             <t:hello /><p />
             <t:hello name="Vincent" /><p />
+            <t:bmi h="170" w="60" /><p />
         </h1>
     </body>
 </html>

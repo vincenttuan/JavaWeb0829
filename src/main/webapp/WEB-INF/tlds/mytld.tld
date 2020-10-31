@@ -13,4 +13,19 @@
           <rtexprvalue>true</rtexprvalue>
       </attribute>
   </tag>
+  <tag>
+      <name>bmi</name>
+      <tag-class>com.web.tag.BmiTag</tag-class>
+      <body-content>empty</body-content>
+      <attribute>
+          <name>h</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+      </attribute>
+      <attribute>
+          <name>w</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+      </attribute>
+  </tag>
 </taglib>
