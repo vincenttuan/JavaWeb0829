@@ -1,0 +1,1133 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1103376 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=2476, tid=0x000000000000128c
+#
+# JRE version: OpenJDK Runtime Environment (8.0_232-b09) (build 1.8.0_232-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.232-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000018245000):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=4748, stack(0x0000000019010000,0x0000000019110000)]
+
+Stack: [0x0000000019010000,0x0000000019110000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:   7663 5657       4       com.sun.tools.javac.comp.Resolve::rawInstantiate (488 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00000000182d8000 JavaThread "Service Thread" daemon [_thread_blocked, id=9832, stack(0x0000000019310000,0x0000000019410000)]
+  0x000000001825b000 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=4216, stack(0x0000000019210000,0x0000000019310000)]
+  0x0000000018247800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=1212, stack(0x0000000019110000,0x0000000019210000)]
+=>0x0000000018245000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=4748, stack(0x0000000019010000,0x0000000019110000)]
+  0x0000000018243800 JavaThread "Attach Listener" daemon [_thread_blocked, id=1288, stack(0x0000000018f10000,0x0000000019010000)]
+  0x0000000018242000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3792, stack(0x0000000018e10000,0x0000000018f10000)]
+  0x00000000176eb800 JavaThread "Finalizer" daemon [_thread_blocked, id=5488, stack(0x0000000018d10000,0x0000000018e10000)]
+  0x00000000176e6000 JavaThread "Reference Handler" daemon [_thread_blocked, id=9720, stack(0x0000000018c10000,0x0000000018d10000)]
+  0x0000000002a18000 JavaThread "main" [_thread_in_Java, id=9272, stack(0x00000000024a0000,0x00000000025a0000)]
+
+Other Threads:
+  0x0000000017626800 VMThread [stack: 0x0000000018b10000,0x0000000018c10000] [id=572]
+  0x00000000182da000 WatcherThread [stack: 0x0000000019410000,0x0000000019510000] [id=10196]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000000002a14b10] CodeCache_lock - owner thread: 0x000000001825b000
+[0x0000000002a171f0] Compile_lock - owner thread: 0x000000001825b000
+[0x0000000002a17cf0] MethodCompileQueue_lock - owner thread: 0x000000001825b000
+
+heap address: 0x0000000080a00000, size: 2038 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 143872K, used 58961K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 44% used [0x00000000d5900000,0x00000000d9294728,0x00000000ddb00000)
+  from space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+  to   space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+ ParOldGen       total 120832K, used 34450K [0x0000000080a00000, 0x0000000088000000, 0x00000000d5900000)
+  object space 120832K, 28% used [0x0000000080a00000,0x0000000082ba4be8,0x0000000088000000)
+ Metaspace       used 36393K, capacity 37012K, committed 37248K, reserved 1083392K
+  class space    used 3988K, capacity 4175K, committed 4224K, reserved 1048576K
+
+Card table byte_map: [0x0000000011e90000,0x0000000012290000] byte_map_base: 0x0000000011a8b000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000065fa8170
+ Begin Bits: [0x0000000012940000, 0x0000000014918000)
+ End Bits:   [0x0000000014918000, 0x00000000168f0000)
+
+Polling page: 0x0000000000780000
+
+CodeCache: size=245760Kb used=18437Kb max_used=18437Kb free=227322Kb
+ bounds [0x0000000002ad0000, 0x0000000003cf0000, 0x0000000011ad0000]
+ total_blobs=5569 nmethods=5162 adapters=320
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 7.534 Thread 0x000000001825b000 nmethod 5668 0x0000000003c51e10 code [0x0000000003c51f60, 0x0000000003c52110]
+Event: 7.535 Thread 0x000000001825b000 5676   !   3       com.sun.tools.javac.comp.LambdaToMethod::translate (35 bytes)
+Event: 7.535 Thread 0x000000001825b000 nmethod 5676 0x0000000003c521d0 code [0x0000000003c52340, 0x0000000003c526c8]
+Event: 7.535 Thread 0x000000001825b000 5677       3       com.sun.tools.javac.comp.LambdaToMethod::translate (32 bytes)
+Event: 7.535 Thread 0x000000001825b000 nmethod 5677 0x0000000003c52850 code [0x0000000003c529e0, 0x0000000003c52ff8]
+Event: 7.535 Thread 0x000000001825b000 5678       3       com.sun.tools.javac.tree.JCTree::setPos (7 bytes)
+Event: 7.535 Thread 0x000000001825b000 nmethod 5678 0x0000000003c53210 code [0x0000000003c53360, 0x0000000003c534b0]
+Event: 7.537 Thread 0x000000001825b000 5680       3       com.sun.tools.javac.jvm.ClassWriter::writeCode (922 bytes)
+Event: 7.543 Thread 0x0000000018247800 nmethod 5636 0x0000000003c57dd0 code [0x0000000003c58000, 0x0000000003c59bf0]
+Event: 7.543 Thread 0x0000000018247800 5665       4       com.sun.tools.javac.comp.Attr::selectSym (600 bytes)
+Event: 7.544 Thread 0x000000001825b000 nmethod 5680 0x0000000003c5b450 code [0x0000000003c5c020, 0x0000000003c63238]
+Event: 7.544 Thread 0x000000001825b000 5683   !   3       sun.util.locale.provider.JRELocaleProviderAdapter::getDecimalFormatSymbolsProvider (56 bytes)
+Event: 7.544 Thread 0x000000001825b000 nmethod 5683 0x0000000003c57350 code [0x0000000003c57500, 0x0000000003c57b88]
+Event: 7.544 Thread 0x000000001825b000 5686       3       com.sun.tools.javac.comp.Lower::needsProtectedAccess (144 bytes)
+Event: 7.545 Thread 0x000000001825b000 nmethod 5686 0x0000000003c55e90 code [0x0000000003c560c0, 0x0000000003c56ea8]
+Event: 7.545 Thread 0x000000001825b000 5684       3       java.util.Formatter$FormatSpecifier::<init> (246 bytes)
+Event: 7.546 Thread 0x000000001825b000 nmethod 5684 0x0000000003c54010 code [0x0000000003c54340, 0x0000000003c55618]
+Event: 7.546 Thread 0x000000001825b000 5685   !   3       java.util.Formatter$FormatSpecifier::index (53 bytes)
+Event: 7.546 Thread 0x000000001825b000 nmethod 5685 0x0000000003c53810 code [0x0000000003c539a0, 0x0000000003c53e18]
+Event: 7.546 Thread 0x000000001825b000 5688       3       com.sun.tools.javac.jvm.ClassWriter::nameType (43 bytes)
+Event: 7.547 Thread 0x000000001825b000 nmethod 5688 0x0000000003c69d50 code [0x0000000003c69f00, 0x0000000003c6a548]
+Event: 7.547 Thread 0x000000001825b000 5690       3       com.sun.tools.javac.comp.Check::unhandled (53 bytes)
+Event: 7.547 Thread 0x000000001825b000 nmethod 5690 0x0000000003c6a810 code [0x0000000003c6a9e0, 0x0000000003c6b318]
+Event: 7.547 Thread 0x000000001825b000 5687       3       com.sun.tools.javac.comp.Resolve$InterfaceLookupPhase$2::update (2 bytes)
+Event: 7.547 Thread 0x000000001825b000 nmethod 5687 0x0000000003c6b710 code [0x0000000003c6b860, 0x0000000003c6b9b0]
+Event: 7.547 Thread 0x000000001825b000 5681       3       com.sun.tools.javac.comp.DeferredAttr$FilterScanner::<init> (18 bytes)
+Event: 7.547 Thread 0x000000001825b000 nmethod 5681 0x0000000003c6ba50 code [0x0000000003c6bbe0, 0x0000000003c6bf90]
+Event: 7.548 Thread 0x000000001825b000 5689       3       com.sun.tools.javac.comp.Check::protection (48 bytes)
+Event: 7.548 Thread 0x000000001825b000 nmethod 5689 0x0000000003c6c150 code [0x0000000003c6c2a0, 0x0000000003c6c430]
+Event: 7.548 Thread 0x000000001825b000 5682       3       com.sun.tools.javac.comp.DeferredAttr$FilterScanner$1::<init> (15 bytes)
+Event: 7.548 Thread 0x000000001825b000 nmethod 5682 0x0000000003c6c4d0 code [0x0000000003c6c620, 0x0000000003c6c7f0]
+Event: 7.549 Thread 0x000000001825b000 5691       3       java.util.Formatter::parse (151 bytes)
+Event: 7.551 Thread 0x000000001825b000 nmethod 5691 0x0000000003c6c890 code [0x0000000003c6ccc0, 0x0000000003c6f738]
+Event: 7.551 Thread 0x000000001825b000 5692       3       java.text.DecimalFormatSymbols::getInstance (37 bytes)
+Event: 7.551 Thread 0x000000001825b000 nmethod 5692 0x0000000003c70e90 code [0x0000000003c71040, 0x0000000003c71568]
+Event: 7.551 Thread 0x000000001825b000 5693       1       com.sun.tools.javac.comp.Resolve$MethodCheckContext::deferredAttrContext (5 bytes)
+Event: 7.551 Thread 0x000000001825b000 nmethod 5693 0x0000000003c53550 code [0x0000000003c536a0, 0x0000000003c537b0]
+Event: 7.552 Thread 0x000000001825b000 5694       3       com.sun.tools.javac.comp.DeferredAttr$FilterScanner::scan (31 bytes)
+Event: 7.553 Thread 0x000000001825b000 nmethod 5694 0x0000000003c71750 code [0x0000000003c718e0, 0x0000000003c71da8]
+Event: 7.553 Thread 0x000000001825b000 5695       3       com.sun.tools.javac.tree.TreeInfo$1DeclScanner::scan (17 bytes)
+Event: 7.553 Thread 0x000000001825b000 nmethod 5695 0x0000000003c71f10 code [0x0000000003c72080, 0x0000000003c72328]
+Event: 7.553 Thread 0x000000001825b000 5696       3       com.sun.tools.javac.comp.Attr::checkMethodId (54 bytes)
+Event: 7.554 Thread 0x000000001825b000 nmethod 5696 0x0000000003c72410 code [0x0000000003c725e0, 0x0000000003c72cc8]
+Event: 7.554 Thread 0x000000001825b000 5697       3       com.sun.tools.javac.comp.Attr::checkMethodIdInternal (127 bytes)
+Event: 7.554 Thread 0x000000001825b000 nmethod 5697 0x0000000003c72fd0 code [0x0000000003c731e0, 0x0000000003c73c78]
+Event: 7.554 Thread 0x000000001825b000 5698       3       com.sun.tools.javac.comp.Resolve$MethodResolutionContext::access$202 (7 bytes)
+Event: 7.555 Thread 0x000000001825b000 nmethod 5698 0x0000000003c74150 code [0x0000000003c742a0, 0x0000000003c743f0]
+Event: 7.555 Thread 0x000000001825b000 5699       3       com.sun.tools.javac.tree.TreeInfo::setPolyKind (105 bytes)
+Event: 7.555 Thread 0x000000001825b000 nmethod 5699 0x0000000003c74490 code [0x0000000003c746e0, 0x0000000003c75638]
+Event: 7.558 Thread 0x000000001825b000 5701       3       com.sun.tools.javac.code.Types$DescriptorFilter::accepts (9 bytes)
+Event: 7.558 Thread 0x000000001825b000 nmethod 5701 0x0000000003c75c90 code [0x0000000003c75e00, 0x0000000003c76088]
+Event: 7.558 Thread 0x000000001825b000 5702       3       com.sun.tools.javac.code.Types$DescriptorFilter::accepts (81 bytes)
+Event: 7.558 Thread 0x000000001825b000 nmethod 5702 0x0000000003c76150 code [0x0000000003c76300, 0x0000000003c769e8]
+Event: 7.559 Thread 0x000000001825b000 5703       3       com.sun.tools.javac.comp.LambdaToMethod$LambdaAnalyzerPreprocessor::context (58 bytes)
+Event: 7.559 Thread 0x000000001825b000 nmethod 5703 0x0000000003c76c10 code [0x0000000003c76e00, 0x0000000003c77768]
+Event: 7.559 Thread 0x000000001825b000 5704       3       com.sun.tools.javac.code.Scope$3$1::update (51 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5704 0x0000000003c77ad0 code [0x0000000003c77c60, 0x0000000003c77f78]
+Event: 7.560 Thread 0x000000001825b000 5705       3       com.sun.tools.javac.code.Scope$3$1::hasNext (13 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5705 0x0000000003c780d0 code [0x0000000003c78220, 0x0000000003c783d0]
+Event: 7.560 Thread 0x000000001825b000 5707       3       com.sun.tools.javac.code.Types$Subst::visitMethodType (10 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5707 0x0000000003c78450 code [0x0000000003c785c0, 0x0000000003c78848]
+Event: 7.560 Thread 0x000000001825b000 5708       3       com.sun.tools.javac.code.Types$Subst::visitMethodType (74 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5708 0x0000000003c78910 code [0x0000000003c78ae0, 0x0000000003c79348]
+Event: 7.560 Thread 0x000000001825b000 5709       3       com.sun.tools.javac.tree.TreeTranslator::visitIdent (6 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5709 0x0000000003c79750 code [0x0000000003c798a0, 0x0000000003c79a10]
+Event: 7.560 Thread 0x000000001825b000 5706       1       com.sun.tools.javac.code.Type::isUnbound (2 bytes)
+Event: 7.560 Thread 0x000000001825b000 nmethod 5706 0x0000000003c79a90 code [0x0000000003c79be0, 0x0000000003c79cf0]
+Event: 7.561 Thread 0x000000001825b000 5710       3       com.sun.tools.javac.tree.JCTree$JCExpression::setType (8 bytes)
+Event: 7.561 Thread 0x000000001825b000 nmethod 5710 0x0000000003c79d50 code [0x0000000003c79ea0, 0x0000000003c7a070]
+Event: 7.561 Thread 0x000000001825b000 5712       3       com.sun.tools.javac.tree.TreeTranslator::visitExec (21 bytes)
+Event: 7.561 Thread 0x000000001825b000 nmethod 5712 0x0000000003c7a110 code [0x0000000003c7a280, 0x0000000003c7a5c8]
+Event: 7.561 Thread 0x000000001825b000 5711       3       com.sun.tools.javac.tree.TreeTranslator::visitBlock (18 bytes)
+Event: 7.562 Thread 0x000000001825b000 nmethod 5711 0x0000000003c7a6d0 code [0x0000000003c7a840, 0x0000000003c7aa88]
+Event: 7.562 Thread 0x000000001825b000 5714       3       com.sun.tools.javac.jvm.Gen::checkStringConstant (58 bytes)
+Event: 7.562 Thread 0x000000001825b000 nmethod 5714 0x0000000003c7ab50 code [0x0000000003c7ad20, 0x0000000003c7b618]
+Event: 7.562 Thread 0x000000001825b000 5716       3       com.sun.tools.javac.jvm.Items$SelfItem::<init> (17 bytes)
+Event: 7.563 Thread 0x000000001825b000 nmethod 5716 0x0000000003c7b990 code [0x0000000003c7bb00, 0x0000000003c7bd50]
+Event: 7.563 Thread 0x000000001825b000 5715       1       com.sun.tools.javac.code.Type::isAnnotated (2 bytes)
+Event: 7.563 Thread 0x000000001825b000 nmethod 5715 0x0000000003c7be50 code [0x0000000003c7bfa0, 0x0000000003c7c0b0]
+Event: 7.563 Thread 0x000000001825b000 5717       3       com.sun.tools.javac.jvm.Code::newLocal (25 bytes)
+Event: 7.563 Thread 0x000000001825b000 nmethod 5717 0x0000000003c7c110 code [0x0000000003c7c300, 0x0000000003c7cc78]
+Event: 7.563 Thread 0x000000001825b000 5718       3       com.sun.tools.javac.jvm.Code::newLocal (9 bytes)
+Event: 7.563 Thread 0x000000001825b000 nmethod 5718 0x0000000003c7d210 code [0x0000000003c7d380, 0x0000000003c7d558]
+Event: 7.563 Thread 0x000000001825b000 5719       3       com.sun.tools.javac.jvm.Code::newLocal (38 bytes)
+Event: 7.564 Thread 0x000000001825b000 nmethod 5719 0x0000000003c7d610 code [0x0000000003c7d780, 0x0000000003c7d968]
+Event: 7.564 Thread 0x000000001825b000 5720       3       java.io.DataOutputStream::<init> (19 bytes)
+Event: 7.564 Thread 0x000000001825b000 nmethod 5720 0x0000000003c7da10 code [0x0000000003c7db80, 0x0000000003c7deb0]
+Event: 7.566 Thread 0x000000001825b000 5721       3       com.sun.tools.javac.code.Type$ClassType::map (54 bytes)
+Event: 7.566 Thread 0x000000001825b000 nmethod 5721 0x0000000003c7e010 code [0x0000000003c7e1c0, 0x0000000003c7e6e8]
+Event: 7.566 Thread 0x000000001825b000 5722       1       com.sun.tools.javac.comp.Infer$InferenceContext::infer (5 bytes)
+Event: 7.566 Thread 0x000000001825b000 nmethod 5722 0x0000000003c7e890 code [0x0000000003c7e9e0, 0x0000000003c7eaf0]
+Event: 7.566 Thread 0x000000001825b000 5723       3       com.sun.tools.javac.code.Types::subst (15 bytes)
+Event: 7.566 Thread 0x000000001825b000 nmethod 5723 0x0000000003c7eb50 code [0x0000000003c7ecc0, 0x0000000003c7eed8]
+Event: 7.566 Thread 0x000000001825b000 5724       3       com.sun.tools.javac.code.Type$TypeVar::getUpperBound (50 bytes)
+Event: 7.567 Thread 0x000000001825b000 nmethod 5724 0x0000000003c7efd0 code [0x0000000003c7f160, 0x0000000003c7f658]
+Event: 7.567 Thread 0x000000001825b000 5725       1       com.sun.tools.javac.code.Type$UndetVar::isCaptured (2 bytes)
+Event: 7.567 Thread 0x000000001825b000 nmethod 5725 0x0000000003c7f7d0 code [0x0000000003c7f920, 0x0000000003c7fa30]
+Event: 7.567 Thread 0x000000001825b000 5726       3       java.util.EnumMap::put (10 bytes)
+Event: 7.567 Thread 0x000000001825b000 nmethod 5726 0x0000000003c7fa90 code [0x0000000003c7fc00, 0x0000000003c7fe88]
+Event: 7.567 Thread 0x000000001825b000 5727       1       java.util.EnumMap::access$600 (5 bytes)
+Event: 7.567 Thread 0x000000001825b000 nmethod 5727 0x0000000003c7ff50 code [0x0000000003c800a0, 0x0000000003c80190]
+Event: 7.567 Thread 0x000000001825b000 5728       3       com.sun.tools.javac.code.Type$WildcardType::accept (9 bytes)
+Event: 7.567 Thread 0x000000001825b000 nmethod 5728 0x0000000003c80210 code [0x0000000003c80380, 0x0000000003c805a8]
+Event: 7.568 Thread 0x000000001825b000 5729       3       com.sun.tools.javac.code.Type$Mapping::<init> (10 bytes)
+Event: 7.568 Thread 0x000000001825b000 nmethod 5729 0x0000000003c80690 code [0x0000000003c807e0, 0x0000000003c809b0]
+Event: 7.572 Thread 0x000000001825b000 5730       3       com.sun.tools.javac.comp.Check$1::deferredAttrContext (11 bytes)
+Event: 7.572 Thread 0x000000001825b000 nmethod 5730 0x0000000003c80a50 code [0x0000000003c80ba0, 0x0000000003c80d10]
+Event: 7.576 Thread 0x000000001825b000 5732       3       com.sun.tools.javac.comp.Infer$InferenceContext::access$100 (5 bytes)
+Event: 7.577 Thread 0x000000001825b000 nmethod 5732 0x0000000003c80dd0 code [0x0000000003c80f20, 0x0000000003c81070]
+Event: 7.578 Thread 0x000000001825b000 5733   !   3       com.sun.tools.javac.comp.Resolve::checkMethod (134 bytes)
+Event: 7.578 Thread 0x000000001825b000 nmethod 5733 0x0000000003c81110 code [0x0000000003c81300, 0x0000000003c81dc8]
+Event: 7.579 Thread 0x000000001825b000 5734       3       java.util.EnumMap::typeCheck (59 bytes)
+Event: 7.579 Thread 0x000000001825b000 nmethod 5734 0x0000000003c82510 code [0x0000000003c82760, 0x0000000003c83678]
+Event: 7.579 Thread 0x000000001825b000 5735       3       java.util.EnumMap::maskNull (12 bytes)
+Event: 7.580 Thread 0x000000001825b000 nmethod 5735 0x0000000003c83d10 code [0x0000000003c83e60, 0x0000000003c84010]
+Event: 7.580 Thread 0x000000001825b000 5736       3       java.util.EnumMap::put (51 bytes)
+Event: 7.580 Thread 0x000000001825b000 nmethod 5736 0x0000000003c84090 code [0x0000000003c84220, 0x0000000003c84788]
+Event: 7.582 Thread 0x000000001825b000 5737       1       com.sun.tools.javac.comp.Infer$InferenceContext::inferenceVars (5 bytes)
+Event: 7.582 Thread 0x000000001825b000 nmethod 5737 0x0000000003c849d0 code [0x0000000003c84b20, 0x0000000003c84c30]
+Event: 7.582 Thread 0x000000001825b000 5738       3       com.sun.tools.javac.comp.Infer$IncorporationStep::accepts (13 bytes)
+Event: 7.582 Thread 0x000000001825b000 nmethod 5738 0x0000000003c84c90 code [0x0000000003c84e00, 0x0000000003c85068]
+Event: 7.583 Thread 0x000000001825b000 5739       3       com.sun.tools.javac.code.Type$ArrayType::accept (9 bytes)
+Event: 7.583 Thread 0x000000001825b000 nmethod 5739 0x0000000003c85150 code [0x0000000003c852c0, 0x0000000003c854e8]
+Event: 7.583 Thread 0x000000001825b000 5740       3       com.sun.tools.javac.comp.Check::checkMethod (630 bytes)
+Event: 7.588 Thread 0x000000001825b000 nmethod 5740 0x0000000003c855d0 code [0x0000000003c85d40, 0x0000000003c8b5a8]
+Event: 7.588 Thread 0x000000001825b000 5741       3       com.sun.tools.javac.comp.Flow$AssignAnalyzer::scanExprs (33 bytes)
+Event: 7.589 Thread 0x000000001825b000 nmethod 5741 0x0000000003c8f390 code [0x0000000003c8f560, 0x0000000003c8fed8]
+Event: 7.589 Thread 0x000000001825b000 5742       3       com.sun.tools.javac.comp.Lower::boxArgs (306 bytes)
+Event: 7.590 Thread 0x000000001825b000 nmethod 5742 0x0000000003c90290 code [0x0000000003c90660, 0x0000000003c92918]
+Event: 7.590 Thread 0x000000001825b000 5746       3       com.sun.tools.javac.comp.Check::checkOverride (92 bytes)
+Event: 7.591 Thread 0x000000001825b000 nmethod 5746 0x0000000003c93b50 code [0x0000000003c93d20, 0x0000000003c944c8]
+Event: 7.591 Thread 0x000000001825b000 5745       3       com.sun.tools.javac.comp.Check$ClashFilter::accepts (64 bytes)
+Event: 7.591 Thread 0x000000001825b000 nmethod 5745 0x0000000003c947d0 code [0x0000000003c94980, 0x0000000003c95078]
+Event: 7.591 Thread 0x000000001825b000 5743       3       com.sun.tools.javac.jvm.Gen::visitApply (78 bytes)
+Event: 7.592 Thread 0x000000001825b000 nmethod 5743 0x0000000003c95250 code [0x0000000003c95440, 0x0000000003c95bd8]
+Event: 7.592 Thread 0x000000001825b000 5748       3       com.sun.tools.javac.comp.Flow$AliveAnalyzer::visitApply (17 bytes)
+Event: 7.592 Thread 0x000000001825b000 nmethod 5748 0x0000000003c95ed0 code [0x0000000003c960c0, 0x0000000003c96c38]
+Event: 7.592 Thread 0x000000001825b000 5747       3       com.sun.tools.javac.comp.Attr::newMethodTemplate (41 bytes)
+Event: 7.592 Thread 0x000000001825b000 nmethod 5747 0x0000000003c96fd0 code [0x0000000003c97180, 0x0000000003c97850]
+Event: 7.592 Thread 0x000000001825b000 5744       3       com.sun.tools.javac.comp.Check::checkDeprecatedAnnotation (82 bytes)
+Event: 7.593 Thread 0x000000001825b000 nmethod 5744 0x0000000003c97cd0 code [0x0000000003c97ee0, 0x0000000003c98968]
+Event: 7.594 Thread 0x000000001825b000 5749       3       com.sun.tools.javac.code.Scope::getElements (10 bytes)
+Event: 7.594 Thread 0x000000001825b000 nmethod 5749 0x0000000003c98e90 code [0x0000000003c99000, 0x0000000003c99290]
+Event: 7.594 Thread 0x000000001825b000 5750       3       com.sun.tools.javac.code.Scope$3::<init> (15 bytes)
+Event: 7.594 Thread 0x000000001825b000 nmethod 5750 0x0000000003c99390 code [0x0000000003c994e0, 0x0000000003c996b0]
+Event: 7.594 Thread 0x000000001825b000 5751       3       com.sun.tools.javac.code.Scope$3::iterator (9 bytes)
+Event: 7.594 Thread 0x000000001825b000 nmethod 5751 0x0000000003c99750 code [0x0000000003c998c0, 0x0000000003c99aa8]
+Event: 7.594 Thread 0x000000001825b000 5752       3       com.sun.tools.javac.code.Scope$3$1::<init> (39 bytes)
+Event: 7.594 Thread 0x000000001825b000 nmethod 5752 0x0000000003c99b50 code [0x0000000003c99cc0, 0x0000000003c99f08]
+Event: 7.595 Thread 0x000000001825b000 5753       3       com.sun.tools.javac.comp.Resolve::mostSpecific (540 bytes)
+Event: 7.597 Thread 0x000000001825b000 nmethod 5753 0x0000000003c9a010 code [0x0000000003c9a480, 0x0000000003c9d498]
+Event: 7.598 Thread 0x000000001825b000 5754       3       com.sun.tools.javac.comp.Attr$7::scan (28 bytes)
+Event: 7.599 Thread 0x000000001825b000 nmethod 5754 0x0000000003c9ee10 code [0x0000000003c9efa0, 0x0000000003c9f538]
+Event: 7.599 Thread 0x000000001825b000 5755       2       com.sun.tools.javac.code.Types::isSubtypeUncheckedInternal (166 bytes)
+Event: 7.600 Thread 0x000000001825b000 nmethod 5755 0x0000000003c9f6d0 code [0x0000000003c9f980, 0x0000000003ca01a8]
+Event: 7.600 Thread 0x000000001825b000 5758       3       com.sun.tools.javac.code.Types::isSubtype (186 bytes)
+Event: 7.601 Thread 0x000000001825b000 nmethod 5758 0x0000000003ca0910 code [0x0000000003ca0c80, 0x0000000003ca2b18]
+Event: 7.601 Thread 0x000000001825b000 5761       3       com.sun.tools.javac.comp.TransTypes::translateArgs (152 bytes)
+Event: 7.602 Thread 0x000000001825b000 nmethod 5761 0x0000000003ca3650 code [0x0000000003ca38e0, 0x0000000003ca5208]
+Event: 7.602 Thread 0x000000001825b000 5756       3       com.sun.tools.javac.comp.Attr::adjustMethodReturnType (105 bytes)
+Event: 7.604 Thread 0x000000001825b000 nmethod 5756 0x0000000003ca5c90 code [0x0000000003ca5fa0, 0x0000000003ca7938]
+Event: 7.604 Thread 0x000000001825b000 5759       1       com.sun.tools.javac.comp.Flow::access$800 (5 bytes)
+Event: 7.604 Thread 0x000000001825b000 nmethod 5759 0x0000000003ca8850 code [0x0000000003ca89a0, 0x0000000003ca8a90]
+Event: 7.604 Thread 0x000000001825b000 5760       3       com.sun.tools.javac.comp.Flow$AssignAnalyzer::visitApply (17 bytes)
+Event: 7.604 Thread 0x000000001825b000 nmethod 5760 0x0000000003ca8b10 code [0x0000000003ca8d40, 0x0000000003ca99b8]
+Event: 7.604 Thread 0x000000001825b000 5757       3       com.sun.tools.javac.comp.DeferredAttr$DeferredChecker::<init> (43 bytes)
+Event: 7.605 Thread 0x000000001825b000 nmethod 5757 0x0000000003ca9f50 code [0x0000000003caa100, 0x0000000003caa7b0]
+Event: 7.612 Thread 0x000000001825b000 5763       3       com.sun.tools.javac.tree.JCTree$JCModifiers::getTag (4 bytes)
+Event: 7.613 Thread 0x000000001825b000 nmethod 5763 0x0000000003caab90 code [0x0000000003caace0, 0x0000000003caae30]
+Event: 7.613 Thread 0x000000001825b000 5764       3       com.sun.tools.javac.comp.Lower::visitVarDef (117 bytes)
+Event: 7.613 Thread 0x000000001825b000 nmethod 5764 0x0000000003caaed0 code [0x0000000003cab0a0, 0x0000000003cab8e8]
+Event: 7.613 Thread 0x000000001825b000 5765       3       com.sun.tools.javac.comp.Lower$1::visitVarDef (42 bytes)
+Event: 7.614 Thread 0x000000001825b000 nmethod 5765 0x0000000003cabb90 code [0x0000000003cabda0, 0x0000000003caca08]
+Event: 7.614 Thread 0x000000001825b000 5766       3       com.sun.tools.javac.jvm.Code::endScope (72 bytes)
+Event: 7.614 Thread 0x000000001825b000 nmethod 5766 0x0000000003cacf90 code [0x0000000003cad1c0, 0x0000000003cadb08]
+Event: 7.614 Thread 0x000000001825b000 5769       3       com.sun.tools.javac.jvm.Items$ImmediateItem::load (344 bytes)
+Event: 7.615 Thread 0x000000001825b000 nmethod 5769 0x0000000003cae010 code [0x0000000003cae380, 0x0000000003caf7f8]
+Event: 7.615 Thread 0x000000001825b000 5768       3       com.sun.tools.javac.jvm.Code::mergeChains (113 bytes)
+Event: 7.617 Thread 0x000000001825b000 nmethod 5768 0x0000000003cb0090 code [0x0000000003cb0260, 0x0000000003cb0a28]
+Event: 7.624 Thread 0x0000000018247800 nmethod 5665 0x0000000003cb6550 code [0x0000000003cb69a0, 0x0000000003cb9370]
+Event: 7.624 Thread 0x0000000018247800 5731       4       com.sun.tools.javac.code.Type::isCompound (32 bytes)
+Event: 7.625 Thread 0x0000000018247800 nmethod 5731 0x0000000003cb34d0 code [0x0000000003cb3620, 0x0000000003cb3728]
+Event: 7.625 Thread 0x0000000018247800 5700       4       com.sun.tools.javac.code.Types$Subst::subst (21 bytes)
+Event: 7.626 Thread 0x0000000018247800 nmethod 5700 0x0000000003cb1c50 code [0x0000000003cb1da0, 0x0000000003cb1e98]
+Event: 7.626 Thread 0x0000000018247800 5713       4       com.sun.tools.javac.code.Types::erasure (19 bytes)
+Event: 7.628 Thread 0x0000000018247800 nmethod 5713 0x0000000003cb16d0 code [0x0000000003cb1820, 0x0000000003cb19b8]
+Event: 7.628 Thread 0x0000000018247800 5670       4       com.sun.tools.javac.code.Types::isSameType (8 bytes)
+Event: 7.629 Thread 0x0000000018247800 nmethod 5670 0x0000000003cb1350 code [0x0000000003cb14a0, 0x0000000003cb1578]
+Event: 7.629 Thread 0x0000000018247800 5762       4       com.sun.tools.javac.code.Types$DefaultTypeVisitor::visit (7 bytes)
+Event: 7.629 Thread 0x0000000018247800 nmethod 5762 0x00000000037238d0 code [0x0000000003723a00, 0x0000000003723a78]
+Event: 7.629 Thread 0x0000000018247800 5679       4       com.sun.tools.javac.parser.JavacParser$SimpleEndPosTable::storeEnd (34 bytes)
+Event: 7.631 Thread 0x000000001825b000 5772       3       com.sun.tools.javac.code.Types::firstUnimplementedAbstractImpl (271 bytes)
+Event: 7.632 Thread 0x000000001825b000 nmethod 5772 0x0000000003cb3b50 code [0x0000000003cb3e60, 0x0000000003cb5a08]
+Event: 7.632 Thread 0x000000001825b000 5773       3       com.sun.tools.javac.comp.Check::isUnchecked (57 bytes)
+Event: 7.633 Thread 0x000000001825b000 nmethod 5773 0x0000000003cb22d0 code [0x0000000003cb24e0, 0x0000000003cb3178]
+Event: 7.633 Thread 0x000000001825b000 5774       3       com.sun.tools.javac.code.Symbol$ClassSymbol::getInterfaces (60 bytes)
+Event: 7.634 Thread 0x000000001825b000 nmethod 5774 0x0000000003cbd390 code [0x0000000003cbd540, 0x0000000003cbda98]
+Event: 7.634 Thread 0x000000001825b000 5775       3       com.sun.tools.javac.code.Type$ClassType::contains (69 bytes)
+Event: 7.635 Thread 0x000000001825b000 nmethod 5775 0x0000000003cbdbd0 code [0x0000000003cbde20, 0x0000000003cbed18]
+Event: 7.636 Thread 0x000000001825b000 5776       3       com.sun.tools.javac.tree.TreeMaker::Block (23 bytes)
+Event: 7.637 Thread 0x000000001825b000 nmethod 5776 0x0000000003cbf190 code [0x0000000003cbf300, 0x0000000003cbf650]
+Event: 7.637 Thread 0x000000001825b000 5778       3       com.sun.tools.javac.jvm.Code::setDefined (55 bytes)
+Event: 7.637 Thread 0x000000001825b000 nmethod 5778 0x0000000003cbf850 code [0x0000000003cbfa20, 0x0000000003cc0018]
+Event: 7.637 Thread 0x000000001825b000 5779       3       com.sun.tools.javac.jvm.Code$LocalVar::openRange (27 bytes)
+Event: 7.637 Thread 0x000000001825b000 nmethod 5779 0x0000000003cc0390 code [0x0000000003cc0540, 0x0000000003cc0b08]
+Event: 7.637 Thread 0x000000001825b000 5780       3       com.sun.tools.javac.jvm.Code$LocalVar::hasOpenRange (32 bytes)
+Event: 7.638 Thread 0x000000001825b000 nmethod 5780 0x0000000003cc0d50 code [0x0000000003cc0ee0, 0x0000000003cc11f8]
+Event: 7.638 Thread 0x000000001825b000 5777       3       com.sun.tools.javac.tree.JCTree$JCBlock::<init> (20 bytes)
+Event: 7.638 Thread 0x000000001825b000 nmethod 5777 0x0000000003cb0dd0 code [0x0000000003cb0f40, 0x0000000003cb11d0]
+Event: 7.639 Thread 0x000000001825b000 5781       3       com.sun.tools.javac.comp.Check::checkClassBounds (171 bytes)
+Event: 7.641 Thread 0x000000001825b000 nmethod 5781 0x0000000003cc1310 code [0x0000000003cc1600, 0x0000000003cc2ec8]
+Event: 7.643 Thread 0x000000001825b000 5783       3       com.sun.tools.javac.jvm.ClassWriter$StackMapTableFrame::isSameType (128 bytes)
+Event: 7.644 Thread 0x000000001825b000 nmethod 5783 0x0000000003cc3a50 code [0x0000000003cc3d60, 0x0000000003cc5b08]
+Event: 7.645 Thread 0x000000001825b000 5784       3       com.sun.tools.javac.code.Types::returnTypeSubstitutable (107 bytes)
+Event: 7.647 Thread 0x000000001825b000 nmethod 5784 0x0000000003cc6290 code [0x0000000003cc65c0, 0x0000000003cc7ee8]
+Event: 7.647 Thread 0x000000001825b000 5787       3       com.sun.tools.javac.comp.Attr::attribStats (31 bytes)
+Event: 7.647 Thread 0x000000001825b000 nmethod 5787 0x0000000003cc89d0 code [0x0000000003cc8b60, 0x0000000003cc9068]
+Event: 7.647 Thread 0x000000001825b000 5786   !   3       com.sun.tools.javac.comp.Attr::visitVarDef (406 bytes)
+Event: 7.648 Thread 0x0000000018247800 nmethod 5679 0x0000000003cccd50 code [0x0000000003cccf40, 0x0000000003ccde50]
+Event: 7.648 Thread 0x0000000018247800 5770       4       com.sun.tools.javac.code.Type$ClassType::getTypeArguments (30 bytes)
+Event: 7.649 Thread 0x0000000018247800 nmethod 5770 0x0000000003cb1fd0 code [0x0000000003cb2120, 0x0000000003cb21f8]
+Event: 7.649 Thread 0x0000000018247800 5771       4       com.sun.tools.javac.util.ByteBuffer::appendByte (34 bytes)
+Event: 7.649 Thread 0x000000001825b000 nmethod 5786 0x0000000003ccf110 code [0x0000000003ccf560, 0x0000000003cd2168]
+Event: 7.649 Thread 0x000000001825b000 5788       3       com.sun.tools.javac.comp.CompileStates$CompileState::isAfter (17 bytes)
+Event: 7.649 Thread 0x000000001825b000 nmethod 5788 0x0000000003ccc990 code [0x0000000003cccae0, 0x0000000003cccc90]
+Event: 7.649 Thread 0x000000001825b000 5785       3       com.sun.tools.javac.comp.Check::isDeprecatedOverrideIgnorable (119 bytes)
+Event: 7.650 Thread 0x000000001825b000 nmethod 5785 0x0000000003ccaf50 code [0x0000000003ccb1a0, 0x0000000003ccc288]
+Event: 7.650 Thread 0x000000001825b000 5789       3       com.sun.tools.javac.code.Source::allowGenerics (16 bytes)
+Event: 7.651 Thread 0x000000001825b000 nmethod 5789 0x0000000003ccaad0 code [0x0000000003ccac40, 0x0000000003ccaea8]
+Event: 7.651 Thread 0x0000000018247800 nmethod 5771 0x0000000003cd57d0 code [0x0000000003cd5920, 0x0000000003cd5be8]
+Event: 7.651 Thread 0x0000000018247800 5782       4       com.sun.tools.javac.util.JCDiagnostic::<init> (79 bytes)
+Event: 7.651 Thread 0x000000001825b000 5790       3       com.sun.tools.javac.code.Types::erasure (9 bytes)
+Event: 7.652 Thread 0x000000001825b000 nmethod 5790 0x0000000003cca750 code [0x0000000003cca8c0, 0x0000000003ccaa48]
+Event: 7.652 Thread 0x0000000018247800 nmethod 5782 0x0000000003cb3850 code [0x0000000003cb3980, 0x0000000003cb3a78]
+Event: 7.652 Thread 0x0000000018247800 5791       4       com.sun.tools.javac.code.Symbol$MethodSymbol::isInheritedIn (72 bytes)
+Event: 7.654 Thread 0x000000001825b000 5793       3       com.sun.tools.javac.tree.JCTree$Visitor::visitLiteral (6 bytes)
+Event: 7.654 Thread 0x000000001825b000 nmethod 5793 0x0000000003cca350 code [0x0000000003cca4c0, 0x0000000003cca6c8]
+Event: 7.654 Thread 0x000000001825b000 5794       3       com.sun.tools.javac.jvm.Gen$ClassReferenceVisitor::visitTree (1 bytes)
+Event: 7.654 Thread 0x000000001825b000 nmethod 5794 0x0000000003cca010 code [0x0000000003cca160, 0x0000000003cca2b0]
+Event: 7.655 Thread 0x000000001825b000 5795       3       com.sun.tools.javac.code.Type::equals (6 bytes)
+Event: 7.655 Thread 0x000000001825b000 nmethod 5795 0x0000000003cc9bd0 code [0x0000000003cc9d40, 0x0000000003cc9f50]
+Event: 7.656 Thread 0x000000001825b000 5796       3       com.sun.tools.javac.code.Type$ClassType::hasErasedSupertypes (5 bytes)
+Event: 7.656 Thread 0x000000001825b000 nmethod 5796 0x0000000003cc97d0 code [0x0000000003cc9940, 0x0000000003cc9b48]
+Event: 7.656 Thread 0x000000001825b000 5798       3       com.sun.tools.javac.code.Type$UndetVar$1::apply (40 bytes)
+Event: 7.656 Thread 0x000000001825b000 nmethod 5798 0x0000000003cd4f10 code [0x0000000003cd50a0, 0x0000000003cd5658]
+Event: 7.656 Thread 0x000000001825b000 5797       3       com.sun.tools.javac.code.Types$21::visitClassType (10 bytes)
+Event: 7.656 Thread 0x000000001825b000 nmethod 5797 0x0000000003cc9310 code [0x0000000003cc9480, 0x0000000003cc9708]
+Event: 7.657 Thread 0x000000001825b000 5799       3       java.util.Formatter$FormatSpecifier::print (243 bytes)
+Event: 7.657 Thread 0x000000001825b000 nmethod 5799 0x0000000003cd4050 code [0x0000000003cd42a0, 0x0000000003cd4b68]
+Event: 7.657 Thread 0x000000001825b000 5800       3       java.util.Formatter$FormatSpecifier::justify (105 bytes)
+
+GC Heap History (18 events):
+Event: 0.729 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 33280K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 0K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a00000,0x0000000085f80000)
+ Metaspace       used 8466K, capacity 8700K, committed 8832K, reserved 1056768K
+  class space    used 968K, capacity 1052K, committed 1152K, reserved 1048576K
+Event: 0.733 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 5005K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d7980000)
+  from space 5120K, 97% used [0x00000000d7980000,0x00000000d7e63440,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+ ParOldGen       total 87552K, used 16K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a04000,0x0000000085f80000)
+ Metaspace       used 8466K, capacity 8700K, committed 8832K, reserved 1056768K
+  class space    used 968K, capacity 1052K, committed 1152K, reserved 1048576K
+}
+Event: 1.253 GC heap before
+{Heap before GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 38285K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 97% used [0x00000000d7980000,0x00000000d7e63440,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+ ParOldGen       total 87552K, used 16K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a04000,0x0000000085f80000)
+ Metaspace       used 12568K, capacity 12796K, committed 13184K, reserved 1060864K
+  class space    used 1496K, capacity 1579K, committed 1664K, reserved 1048576K
+Event: 1.265 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 5112K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7e80000,0x00000000d837e3b8,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 2682K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 3% used [0x0000000080a00000,0x0000000080c9e858,0x0000000085f80000)
+ Metaspace       used 12568K, capacity 12796K, committed 13184K, reserved 1060864K
+  class space    used 1496K, capacity 1579K, committed 1664K, reserved 1048576K
+}
+Event: 2.179 GC heap before
+{Heap before GC invocations=3 (full 0):
+ PSYoungGen      total 38400K, used 38392K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7e80000,0x00000000d837e3b8,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 2682K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 3% used [0x0000000080a00000,0x0000000080c9e858,0x0000000085f80000)
+ Metaspace       used 15564K, capacity 15864K, committed 16000K, reserved 1062912K
+  class space    used 1794K, capacity 1885K, committed 1920K, reserved 1048576K
+Event: 2.188 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 38400K, used 5117K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7980000,0x00000000d7e7f630,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d9f00000,0x00000000d9f00000,0x00000000da400000)
+ ParOldGen       total 87552K, used 5314K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 6% used [0x0000000080a00000,0x0000000080f30800,0x0000000085f80000)
+ Metaspace       used 15564K, capacity 15864K, committed 16000K, reserved 1062912K
+  class space    used 1794K, capacity 1885K, committed 1920K, reserved 1048576K
+}
+Event: 2.791 GC heap before
+{Heap before GC invocations=4 (full 0):
+ PSYoungGen      total 38400K, used 38397K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7980000,0x00000000d7e7f630,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d9f00000,0x00000000d9f00000,0x00000000da400000)
+ ParOldGen       total 87552K, used 5314K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 6% used [0x0000000080a00000,0x0000000080f30800,0x0000000085f80000)
+ Metaspace       used 16059K, capacity 16414K, committed 16512K, reserved 1064960K
+  class space    used 1810K, capacity 1918K, committed 1920K, reserved 1048576K
+Event: 2.801 GC heap after
+Heap after GC invocations=4 (full 0):
+ PSYoungGen      total 71680K, used 5117K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 66560K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d9a00000)
+  from space 5120K, 99% used [0x00000000d9f00000,0x00000000da3ff650,0x00000000da400000)
+  to   space 5120K, 0% used [0x00000000d9a00000,0x00000000d9a00000,0x00000000d9f00000)
+ ParOldGen       total 87552K, used 7255K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 8% used [0x0000000080a00000,0x0000000081115c48,0x0000000085f80000)
+ Metaspace       used 16059K, capacity 16414K, committed 16512K, reserved 1064960K
+  class space    used 1810K, capacity 1918K, committed 1920K, reserved 1048576K
+}
+Event: 3.882 GC heap before
+{Heap before GC invocations=5 (full 0):
+ PSYoungGen      total 71680K, used 71677K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 66560K, 100% used [0x00000000d5900000,0x00000000d9a00000,0x00000000d9a00000)
+  from space 5120K, 99% used [0x00000000d9f00000,0x00000000da3ff650,0x00000000da400000)
+  to   space 5120K, 0% used [0x00000000d9a00000,0x00000000d9a00000,0x00000000d9f00000)
+ ParOldGen       total 87552K, used 7255K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 8% used [0x0000000080a00000,0x0000000081115c48,0x0000000085f80000)
+ Metaspace       used 18461K, capacity 18904K, committed 19200K, reserved 1067008K
+  class space    used 2122K, capacity 2233K, committed 2304K, reserved 1048576K
+Event: 3.911 GC heap after
+Heap after GC invocations=5 (full 0):
+ PSYoungGen      total 71680K, used 5104K [0x00000000d5900000, 0x00000000df100000, 0x0000000100000000)
+  eden space 66560K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d9a00000)
+  from space 5120K, 99% used [0x00000000d9a00000,0x00000000d9efc010,0x00000000d9f00000)
+  to   space 11264K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df100000)
+ ParOldGen       total 87552K, used 12803K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 14% used [0x0000000080a00000,0x0000000081680f08,0x0000000085f80000)
+ Metaspace       used 18461K, capacity 18904K, committed 19200K, reserved 1067008K
+  class space    used 2122K, capacity 2233K, committed 2304K, reserved 1048576K
+}
+Event: 4.286 GC heap before
+{Heap before GC invocations=6 (full 0):
+ PSYoungGen      total 71680K, used 24902K [0x00000000d5900000, 0x00000000df100000, 0x0000000100000000)
+  eden space 66560K, 29% used [0x00000000d5900000,0x00000000d6c55928,0x00000000d9a00000)
+  from space 5120K, 99% used [0x00000000d9a00000,0x00000000d9efc010,0x00000000d9f00000)
+  to   space 11264K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df100000)
+ ParOldGen       total 87552K, used 12803K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 14% used [0x0000000080a00000,0x0000000081680f08,0x0000000085f80000)
+ Metaspace       used 20654K, capacity 21120K, committed 21248K, reserved 1069056K
+  class space    used 2383K, capacity 2505K, committed 2560K, reserved 1048576K
+Event: 4.295 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 143360K, used 6711K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10240K, 65% used [0x00000000de600000,0x00000000dec8df80,0x00000000df000000)
+  to   space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+ ParOldGen       total 87552K, used 12811K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 14% used [0x0000000080a00000,0x0000000081682f08,0x0000000085f80000)
+ Metaspace       used 20654K, capacity 21120K, committed 21248K, reserved 1069056K
+  class space    used 2383K, capacity 2505K, committed 2560K, reserved 1048576K
+}
+Event: 4.295 GC heap before
+{Heap before GC invocations=7 (full 1):
+ PSYoungGen      total 143360K, used 6711K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10240K, 65% used [0x00000000de600000,0x00000000dec8df80,0x00000000df000000)
+  to   space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+ ParOldGen       total 87552K, used 12811K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 14% used [0x0000000080a00000,0x0000000081682f08,0x0000000085f80000)
+ Metaspace       used 20654K, capacity 21120K, committed 21248K, reserved 1069056K
+  class space    used 2383K, capacity 2505K, committed 2560K, reserved 1048576K
+Event: 4.345 GC heap after
+Heap after GC invocations=7 (full 1):
+ PSYoungGen      total 143360K, used 0K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+  to   space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+ ParOldGen       total 64000K, used 11930K [0x0000000080a00000, 0x0000000084880000, 0x00000000d5900000)
+  object space 64000K, 18% used [0x0000000080a00000,0x00000000815a68e8,0x0000000084880000)
+ Metaspace       used 20654K, capacity 21120K, committed 21248K, reserved 1069056K
+  class space    used 2383K, capacity 2505K, committed 2560K, reserved 1048576K
+}
+Event: 6.455 GC heap before
+{Heap before GC invocations=8 (full 1):
+ PSYoungGen      total 143360K, used 105201K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 79% used [0x00000000d5900000,0x00000000dbfbc490,0x00000000ddb00000)
+  from space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+  to   space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+ ParOldGen       total 64000K, used 11930K [0x0000000080a00000, 0x0000000084880000, 0x00000000d5900000)
+  object space 64000K, 18% used [0x0000000080a00000,0x00000000815a68e8,0x0000000084880000)
+ Metaspace       used 34642K, capacity 35156K, committed 35416K, reserved 1081344K
+  class space    used 3841K, capacity 3983K, committed 4096K, reserved 1048576K
+Event: 6.474 GC heap after
+Heap after GC invocations=8 (full 1):
+ PSYoungGen      total 143872K, used 10746K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10752K, 99% used [0x00000000ddb00000,0x00000000de57eb88,0x00000000de580000)
+  to   space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+ ParOldGen       total 64000K, used 24589K [0x0000000080a00000, 0x0000000084880000, 0x00000000d5900000)
+  object space 64000K, 38% used [0x0000000080a00000,0x0000000082203660,0x0000000084880000)
+ Metaspace       used 34642K, capacity 35156K, committed 35416K, reserved 1081344K
+  class space    used 3841K, capacity 3983K, committed 4096K, reserved 1048576K
+}
+Event: 6.474 GC heap before
+{Heap before GC invocations=9 (full 2):
+ PSYoungGen      total 143872K, used 10746K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10752K, 99% used [0x00000000ddb00000,0x00000000de57eb88,0x00000000de580000)
+  to   space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+ ParOldGen       total 64000K, used 24589K [0x0000000080a00000, 0x0000000084880000, 0x00000000d5900000)
+  object space 64000K, 38% used [0x0000000080a00000,0x0000000082203660,0x0000000084880000)
+ Metaspace       used 34642K, capacity 35156K, committed 35416K, reserved 1081344K
+  class space    used 3841K, capacity 3983K, committed 4096K, reserved 1048576K
+Event: 6.578 GC heap after
+Heap after GC invocations=9 (full 2):
+ PSYoungGen      total 143872K, used 0K [0x00000000d5900000, 0x00000000df000000, 0x0000000100000000)
+  eden space 133120K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000ddb00000)
+  from space 10752K, 0% used [0x00000000ddb00000,0x00000000ddb00000,0x00000000de580000)
+  to   space 10240K, 0% used [0x00000000de600000,0x00000000de600000,0x00000000df000000)
+ ParOldGen       total 120832K, used 34450K [0x0000000080a00000, 0x0000000088000000, 0x00000000d5900000)
+  object space 120832K, 28% used [0x0000000080a00000,0x0000000082ba4be8,0x0000000088000000)
+ Metaspace       used 34642K, capacity 35156K, committed 35416K, reserved 1081344K
+  class space    used 3841K, capacity 3983K, committed 4096K, reserved 1048576K
+}
+
+Deoptimization events (142 events):
+Event: 0.555 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d2617c method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.560 Thread 0x0000000002a18000 Uncommon trap: reason=range_check action=make_not_entrant pc=0x0000000002d23f20 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 0.657 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d634f4 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 241
+Event: 0.690 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d89a74 method=org.codehaus.plexus.util.xml.pull.MXParser.isWhitespace()Z @ 20
+Event: 1.279 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e21360 method=java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; @ 206
+Event: 1.497 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002db7080 method=org.codehaus.plexus.util.xml.pull.MXParser.parseStartTag()I @ 443
+Event: 1.646 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c9c774 method=java.lang.String.replace(CC)Ljava/lang/String; @ 2
+Event: 1.723 Thread 0x0000000002a18000 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000000002f05348 method=java.lang.String.regionMatches(ZILjava/lang/String;II)Z @ 63
+Event: 1.739 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030148cc method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 879
+Event: 1.743 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d427fc method=sun.nio.cs.UTF_8$Decoder.decode([BII[C)I @ 30
+Event: 1.743 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d72bb0 method=sun.nio.cs.UTF_8$Decoder.decodeArrayLoop(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;)Ljava/nio/charset/CoderResult; @ 84
+Event: 1.809 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003081820 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 1161
+Event: 1.875 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d704fc method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.875 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e582a8 method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.993 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030b16f4 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 972
+Event: 2.039 Thread 0x0000000002a18000 Uncommon trap: reason=null_check action=make_not_entrant pc=0x0000000003101fb4 method=org.apache.maven.model.io.xpp3.MavenXpp3Reader.checkFieldWithDuplicate(Lorg/codehaus/plexus/util/xml/pull/XmlPullParser;Ljava/lang/String;Ljava/lang/String;Ljava/util/Se
+Event: 2.146 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030e3c9c method=java.lang.String.trim()Ljava/lang/String; @ 63
+Event: 2.153 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000003069164 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 2.154 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000003069164 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 2.154 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000003069164 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 2.155 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000003069164 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 2.278 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f4b744 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 53
+Event: 2.490 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031596ac method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 149
+Event: 2.516 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031596ac method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 149
+Event: 2.516 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031596ac method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 149
+Event: 2.523 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031596ac method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 149
+Event: 2.687 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030e465c method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 18
+Event: 2.947 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000031a5408 method=org.codehaus.plexus.util.xml.pull.MXParser.parseAttribute()C @ 995
+Event: 3.249 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003458318 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.hasNext()Z @ 4
+Event: 3.402 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003110950 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 3.445 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003110950 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 3.453 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000350e5e4 method=org.codehaus.plexus.classworlds.realm.Entry.matches(Ljava/lang/String;)Z @ 150
+Event: 3.490 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003110950 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 3.509 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003110950 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 3.522 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003379be0 method=com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object; @ 161
+Event: 3.676 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003458318 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.hasNext()Z @ 4
+Event: 4.042 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003458318 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.hasNext()Z @ 4
+Event: 4.152 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00000000033443d8 method=java.nio.charset.CharsetDecoder.reset()Ljava/nio/charset/CharsetDecoder; @ 1
+Event: 4.463 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034c3b88 method=java.util.jar.Manifest$FastInputStream.readLine([BII)I @ 87
+Event: 4.463 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034f42c0 method=java.util.jar.Attributes$Name.isDigit(C)Z @ 3
+Event: 4.491 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036abf9c method=java.util.StringTokenizer.setMaxDelimCodePoint()V @ 71
+Event: 4.494 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036e2158 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 20
+Event: 4.494 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036e5fe4 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 20
+Event: 4.503 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036dd0c0 method=java.util.jar.Manifest$FastInputStream.peek()B @ 8
+Event: 4.541 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000302d154 method=java.util.jar.JarFile.maybeInstantiateVerifier()V @ 75
+Event: 4.545 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036a68f0 method=java.util.StringTokenizer.setMaxDelimCodePoint()V @ 71
+Event: 4.557 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e17e50 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 236
+Event: 4.573 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036e7004 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 30
+Event: 4.573 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bfdd60 method=java.net.URI.match(CJJ)Z @ 45
+Event: 4.576 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036e7004 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 30
+Event: 4.576 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036e7004 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 30
+Event: 4.577 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036e7004 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 30
+Event: 4.580 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000031aa084 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 4.580 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000031aa084 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 4.580 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000031aa084 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 4.580 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000031aa084 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 4.581 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003240f80 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.581 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003240f80 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.582 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003240f80 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.582 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003240f80 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.584 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003029d3c method=java.lang.CharacterDataLatin1.isWhitespace(I)Z @ 14
+Event: 4.584 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002dfdf7c method=java.lang.CharacterDataLatin1.isWhitespace(I)Z @ 14
+Event: 4.632 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036f2ee4 method=java.lang.CharacterDataLatin1.digit(II)I @ 60
+Event: 4.633 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c04f40 method=java.lang.CharacterData.of(I)Ljava/lang/CharacterData; @ 4
+Event: 4.746 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000370b8c0 method=java.lang.StringCoding$StringDecoder.decode([BII)[C @ 20
+Event: 4.812 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033cfccc method=java.io.WinNTFileSystem.normalize(Ljava/lang/String;)Ljava/lang/String; @ 128
+Event: 5.503 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002beaf40 method=com.sun.tools.javac.code.Scope.lookup(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/util/Filter;)Lcom/sun/tools/javac/code/Scope$Entry; @ 49
+Event: 5.504 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002beaf40 method=com.sun.tools.javac.code.Scope.lookup(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/util/Filter;)Lcom/sun/tools/javac/code/Scope$Entry; @ 49
+Event: 5.505 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002beaf40 method=com.sun.tools.javac.code.Scope.lookup(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/util/Filter;)Lcom/sun/tools/javac/code/Scope$Entry; @ 49
+Event: 5.505 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002beaf40 method=com.sun.tools.javac.code.Scope.lookup(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/util/Filter;)Lcom/sun/tools/javac/code/Scope$Entry; @ 49
+Event: 5.558 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002f28744 method=java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; @ 38
+Event: 5.558 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003825a74 method=java.util.jar.JarFile.ensureInitialization()V @ 21
+Event: 5.559 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003037880 method=java.util.LinkedHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 20
+Event: 5.564 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036cb56c method=java.security.CodeSource.getCertificates()[Ljava/security/cert/Certificate; @ 22
+Event: 5.565 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002f28744 method=java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; @ 38
+Event: 5.565 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002f28744 method=java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; @ 38
+Event: 5.565 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002f28744 method=java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; @ 38
+Event: 5.571 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003856434 method=java.util.jar.JarFile.ensureInitialization()V @ 21
+Event: 5.850 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e1c96c method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 5.867 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000318e524 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 162
+Event: 5.877 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002fac418 method=java.util.HashMap.resize()[Ljava/util/HashMap$Node; @ 206
+Event: 6.053 Thread 0x0000000002a18000 Uncommon trap: reason=predicate action=maybe_recompile pc=0x000000000368bb00 method=java.util.StringTokenizer.skipDelimiters(I)I @ 17
+Event: 6.053 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036b6bfc method=java.util.StringTokenizer.scanToken(I)I @ 96
+Event: 6.053 Thread 0x0000000002a18000 Uncommon trap: reason=predicate action=maybe_recompile pc=0x000000000343a648 method=java.util.StringTokenizer.skipDelimiters(I)I @ 17
+Event: 6.053 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003255fc8 method=java.util.StringTokenizer.scanToken(I)I @ 96
+Event: 6.141 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003683fb4 method=org.codehaus.plexus.classworlds.realm.Entry.matches(Ljava/lang/String;)Z @ 20
+Event: 6.181 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033bce28 method=java.util.ArrayList.remove(Ljava/lang/Object;)Z @ 59
+Event: 6.452 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d4f6c0 method=java.util.Vector.contains(Ljava/lang/Object;)Z @ 6
+Event: 6.760 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000303f794 method=org.eclipse.persistence.internal.oxm.XPathFragment.equals(Ljava/lang/Object;Z)Z @ 111
+Event: 6.931 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003918798 method=com.sun.tools.javac.jvm.ClassReader.sigToType()Lcom/sun/tools/javac/code/Type; @ 288
+Event: 7.104 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c3d858 method=com.sun.tools.javac.code.Scope.lookup(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/util/Filter;)Lcom/sun/tools/javac/code/Scope$Entry; @ 54
+Event: 7.105 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000391c2d8 method=com.sun.tools.javac.comp.Attr.checkId(Lcom/sun/tools/javac/tree/JCTree;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/comp/Env;Lcom/sun
+Event: 7.105 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000039823d0 method=com.sun.tools.javac.comp.Attr.checkIdInternal(Lcom/sun/tools/javac/tree/JCTree;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Type
+Event: 7.111 Thread 0x0000000002a18000 Uncommon trap: reason=unloaded action=reinterpret pc=0x000000000364bf40 method=com.sun.tools.javac.jvm.ClassReader.readPool(I)Ljava/lang/Object; @ 390
+Event: 7.115 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394da74 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.124 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394a734 method=com.sun.tools.javac.code.Types$19.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/util/List; @ 46
+Event: 7.124 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000039364e8 method=com.sun.tools.javac.code.Types$18.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/code/Type; @ 19
+Event: 7.130 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394a734 method=com.sun.tools.javac.code.Types$19.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/util/List; @ 46
+Event: 7.131 Thread 0x0000000002a18000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x000000000394a798 method=com.sun.tools.javac.util.List.prependList(Lcom/sun/tools/javac/util/List;)Lcom/sun/tools/javac/util/List; @ 1
+Event: 7.131 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000039364e8 method=com.sun.tools.javac.code.Types$18.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/code/Type; @ 19
+Event: 7.131 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000039364e8 method=com.sun.tools.javac.code.Types$18.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/code/Type; @ 19
+Event: 7.131 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394a734 method=com.sun.tools.javac.code.Types$19.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/util/List; @ 46
+Event: 7.134 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394da74 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.136 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394da74 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.136 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394da74 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.136 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003933e9c method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.140 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000039364e8 method=com.sun.tools.javac.code.Types$18.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/code/Type; @ 19
+Event: 7.145 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000394a734 method=com.sun.tools.javac.code.Types$19.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/util/List; @ 46
+Event: 7.146 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c06bb4 method=com.sun.tools.javac.util.ArrayUtils.ensureCapacity([BI)[B @ 3
+Event: 7.153 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002cdc4dc method=com.sun.tools.javac.code.Type.containsAny(Lcom/sun/tools/javac/util/List;)Z @ 6
+Event: 7.153 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002cdc4dc method=com.sun.tools.javac.code.Type.containsAny(Lcom/sun/tools/javac/util/List;)Z @ 6
+Event: 7.154 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002cdc4dc method=com.sun.tools.javac.code.Type.containsAny(Lcom/sun/tools/javac/util/List;)Z @ 6
+Event: 7.154 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002cdc4dc method=com.sun.tools.javac.code.Type.containsAny(Lcom/sun/tools/javac/util/List;)Z @ 6
+Event: 7.160 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000397c240 method=com.sun.tools.javac.code.Symbol$TypeSymbol.formFullName(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/code/Symbol;)Lcom/sun/tools/javac/util/Name; @ 22
+Event: 7.160 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000398c2f4 method=com.sun.tools.javac.code.Symbol$TypeSymbol.formFlatName(Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/code/Symbol;)Lcom/sun/tools/javac/util/Name; @ 11
+Event: 7.185 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000039376f8 method=com.sun.tools.javac.code.Types$19.visitClassType(Lcom/sun/tools/javac/code/Type$ClassType;Ljava/lang/Void;)Lcom/sun/tools/javac/util/List; @ 46
+Event: 7.206 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000308f724 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 7.217 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000308f724 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 7.228 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000308f724 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 7.235 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bf2f68 method=com.sun.tools.javac.code.Scope.enter(Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Scope;Lcom/sun/tools/javac/code/Scope;Z)V @ 116
+Event: 7.235 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000308f724 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 7.263 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000380add4 method=com.sun.tools.javac.util.Convert.chars2utf([CI[BII)I @ 35
+Event: 7.267 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bfed58 method=com.sun.tools.javac.util.ListBuffer.append(Ljava/lang/Object;)Lcom/sun/tools/javac/util/ListBuffer; @ 9
+Event: 7.277 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003aefdfc method=com.sun.tools.javac.code.Scope.remove(Lcom/sun/tools/javac/code/Symbol;)V @ 37
+Event: 7.339 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003b2e8b0 method=com.sun.tools.javac.comp.Resolve.findImmediateMemberType(Lcom/sun/tools/javac/comp/Env;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/util/Name;Lcom/sun/tools/javac/cod
+Event: 7.356 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003b57eb8 method=com.sun.tools.javac.code.Types.isSignaturePolymorphic(Lcom/sun/tools/javac/code/Symbol$MethodSymbol;)Z @ 35
+Event: 7.374 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000394d1a8 method=com.sun.tools.javac.code.Type$ClassType.getTypeArguments()Lcom/sun/tools/javac/util/List; @ 15
+Event: 7.383 Thread 0x0000000002a18000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003bdea80 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun
+Event: 7.384 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003bdeb88 method=com.sun.tools.javac.comp.Check.checkType(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun/too
+Event: 7.444 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000399eaac method=com.sun.tools.javac.comp.Attr.selectSym(Lcom/sun/tools/javac/tree/JCTree$JCFieldAccess;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac
+Event: 7.445 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000399eaac method=com.sun.tools.javac.comp.Attr.selectSym(Lcom/sun/tools/javac/tree/JCTree$JCFieldAccess;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac
+Event: 7.445 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000399eaac method=com.sun.tools.javac.comp.Attr.selectSym(Lcom/sun/tools/javac/tree/JCTree$JCFieldAccess;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac
+Event: 7.446 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000399eaac method=com.sun.tools.javac.comp.Attr.selectSym(Lcom/sun/tools/javac/tree/JCTree$JCFieldAccess;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac
+Event: 7.461 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003bdc13c method=com.sun.tools.javac.code.Type.isCompound()Z @ 14
+Event: 7.565 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003bdc13c method=com.sun.tools.javac.code.Type.isCompound()Z @ 14
+Event: 7.567 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003bdc13c method=com.sun.tools.javac.code.Type.isCompound()Z @ 14
+Event: 7.575 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003bdc13c method=com.sun.tools.javac.code.Type.isCompound()Z @ 14
+Event: 7.594 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038806c8 method=com.sun.tools.javac.code.Types.isSubtypeUncheckedInternal(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/util/Warner;)Z @ 37
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038806c8 method=com.sun.tools.javac.code.Types.isSubtypeUncheckedInternal(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/util/Warner;)Z @ 37
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038806c8 method=com.sun.tools.javac.code.Types.isSubtypeUncheckedInternal(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/util/Warner;)Z @ 37
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038806c8 method=com.sun.tools.javac.code.Types.isSubtypeUncheckedInternal(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/util/Warner;)Z @ 37
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002e3c1d8 method=com.sun.tools.javac.code.Types.isSubtype(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;Z)Z @ 28
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (123 events):
+Event: 0.033 Thread 0x0000000002a18000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d5907cb8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.
+Event: 0.033 Thread 0x0000000002a18000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d5907fa0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 4014]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cce5d0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cce9c8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cd2ce8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cd30e0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cd4988) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.233 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cd4d80) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.547 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a26148) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.548 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a2ff58) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.554 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a89318) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.556 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a95b50) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.556 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a96b68) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.557 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a9faf0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.557 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aa08c8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.557 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aa1f68) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.557 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aa3c80) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.558 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aa5158) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.558 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aacb90) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.558 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aada00) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6aaf460) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab0200) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab1f60) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab3648) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab4df0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab7258) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab87b0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6ab9ec0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.559 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6abb600) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.560 Thread 0x0000000002a18000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 24> (0x00000000d6abc348) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 1.295 Thread 0x0000000002a18000 Exception <a 'java/lang/NoClassDefFoundError': com/google/inject/servlet/ServletModuleTargetVisitor> (0x00000000d5a89ff0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 1.295 Thread 0x0000000002a18000 Exception <a 'java/lang/NoClassDefFoundError'> (0x00000000d5a89ff0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1505]
+Event: 1.295 Thread 0x0000000002a18000 Exception <a 'java/lang/NoClassDefFoundError': javax/annotation/Priority> (0x00000000d5a8ea80) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 1.551 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d63125a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.551 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d63127c0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.551 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d63129d8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.552 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d6323160) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.552 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d6323378) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.552 Thread 0x0000000002a18000 Exception <a 'java/lang/NullPointerException'> (0x00000000d6323590) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.874 Thread 0x0000000002a18000 Implicit null exception at 0x0000000002d70315 to 0x0000000002d704ed
+Event: 1.875 Thread 0x0000000002a18000 Implicit null exception at 0x0000000002e5822f to 0x0000000002e58299
+Event: 2.039 Thread 0x0000000002a18000 Implicit null exception at 0x0000000003100ddd to 0x0000000003101f99
+Event: 3.465 Thread 0x0000000002a18000 Exception <a 'java/lang/NoClassDefFoundError': org/codehaus/plexus/util/interpolation/ValueSource> (0x00000000d8570b38) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.500 Thread 0x0000000002a18000 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/graph/DependencyNode> (0x00000000d87a83e8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.522 Thread 0x0000000002a18000 Implicit null exception at 0x00000000033789ab to 0x0000000003379bc1
+Event: 4.171 Thread 0x0000000002a18000 Exception <a 'java/lang/ClassNotFoundException': com/sun/tools/javac/api/JavacTool> (0x00000000d660ad60) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 4.801 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7171350) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.802 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7196b38) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.803 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7197868) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d751eb58) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d751f9d0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7520850) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d75216a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7522500) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.854 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7523358) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.855 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d75241d0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.855 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7525070) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.856 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7525ef0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.856 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7526d68) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.861 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7527be8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.862 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7528a60) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.862 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7529900) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 5.812 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b6fac0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b700a0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b71b08) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b720e8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b73af8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b740d8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b75ae8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b760c8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b77ad8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b780b8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b79ac8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7a0a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7bb10) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7c0f0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7db58) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7e138) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b7fb48) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b80128) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.813 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b81b90) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b82170) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b83b80) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b84160) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b85bc8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b861a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b87c10) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b881f0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b89c00) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8a1e0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8bc48) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8c228) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8dc38) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8e218) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b8fc28) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b90208) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b91c18) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b921f8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b93c08) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.814 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b941e8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b95c50) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b96230) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b97c98) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b98278) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b99c88) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9a268) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9bcd0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9c2b0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9dcc0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9e2a0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9b9fd08) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9ba02e8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9ba1d50) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.815 Thread 0x0000000002a18000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d9ba2330) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 5.850 Thread 0x0000000002a18000 Implicit null exception at 0x0000000002e1c37b to 0x0000000002e1c951
+Event: 6.449 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000dbf107a0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.449 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000dbf11130) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.450 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000dbf120c0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.450 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000dbf12ae0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.762 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d691d6b0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.762 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d691e040) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.762 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d691eef0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 6.762 Thread 0x0000000002a18000 Exception <a 'java/io/FileNotFoundException'> (0x00000000d691f910) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+
+Events (250 events):
+Event: 7.336 loading class com/sun/tools/javac/code/Types$DescriptorCache$Entry done
+Event: 7.336 loading class com/sun/source/tree/LambdaExpressionTree$BodyKind
+Event: 7.336 loading class com/sun/source/tree/LambdaExpressionTree$BodyKind done
+Event: 7.336 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode
+Event: 7.336 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode done
+Event: 7.337 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode$StructuralStuckChecker
+Event: 7.337 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode$StructuralStuckChecker done
+Event: 7.337 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode$LambdaBodyStructChecker
+Event: 7.337 loading class com/sun/tools/javac/comp/DeferredAttr$DeferredAttrNode$LambdaBodyStructChecker done
+Event: 7.339 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003b2e8b0
+Event: 7.339 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003b2e8b0 sp=0x000000000259ade0
+Event: 7.339 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259adb0 mode 2
+Event: 7.340 loading class com/sun/tools/javac/comp/Attr$7
+Event: 7.340 loading class com/sun/tools/javac/comp/Attr$7 done
+Event: 7.340 loading class com/sun/tools/javac/comp/Attr$PostAttrAnalyzer
+Event: 7.340 loading class com/sun/tools/javac/comp/Attr$PostAttrAnalyzer done
+Event: 7.343 loading class com/sun/tools/javac/comp/LambdaToMethod
+Event: 7.343 loading class com/sun/tools/javac/comp/LambdaToMethod done
+Event: 7.345 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$TranslationContext
+Event: 7.345 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$TranslationContext done
+Event: 7.345 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$ReferenceTranslationContext
+Event: 7.345 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$ReferenceTranslationContext done
+Event: 7.346 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor
+Event: 7.346 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor done
+Event: 7.347 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$1
+Event: 7.347 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$1 done
+Event: 7.347 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$SyntheticMethodNameCounter
+Event: 7.347 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$SyntheticMethodNameCounter done
+Event: 7.348 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$Frame
+Event: 7.348 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$Frame done
+Event: 7.348 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext
+Event: 7.348 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext done
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext$1
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext$1 done
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext$2
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaAnalyzerPreprocessor$LambdaTranslationContext$2 done
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$1
+Event: 7.349 loading class com/sun/tools/javac/comp/LambdaToMethod$1 done
+Event: 7.350 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaSymbolKind
+Event: 7.350 loading class com/sun/tools/javac/comp/LambdaToMethod$LambdaSymbolKind done
+Event: 7.350 loading class com/sun/tools/javac/tree/JCTree$JCMemberReference$ReferenceKind
+Event: 7.350 loading class com/sun/tools/javac/tree/JCTree$JCMemberReference$ReferenceKind done
+Event: 7.351 loading class com/sun/tools/javac/comp/LambdaToMethod$KlassInfo
+Event: 7.351 loading class com/sun/tools/javac/comp/LambdaToMethod$KlassInfo done
+Event: 7.352 loading class com/sun/tools/javac/jvm/Pool$MethodHandle
+Event: 7.352 loading class com/sun/tools/javac/jvm/Pool$MethodHandle done
+Event: 7.352 loading class com/sun/tools/javac/jvm/Pool$MethodHandle$1
+Event: 7.352 loading class com/sun/tools/javac/jvm/Pool$MethodHandle$1 done
+Event: 7.353 loading class com/sun/tools/javac/jvm/Pool$MethodHandle$2
+Event: 7.353 loading class com/sun/tools/javac/jvm/Pool$MethodHandle$2 done
+Event: 7.356 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003b57eb8
+Event: 7.356 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003b57eb8 sp=0x000000000259a9f0
+Event: 7.356 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259a988 mode 2
+Event: 7.357 loading class com/sun/tools/javac/jvm/Pool$DynamicMethod
+Event: 7.357 loading class com/sun/tools/javac/jvm/Pool$DynamicMethod done
+Event: 7.372 Executing VM operation: ForceSafepoint
+Event: 7.372 Executing VM operation: ForceSafepoint done
+Event: 7.374 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x000000000394d1a8
+Event: 7.374 Thread 0x0000000002a18000 DEOPT PACKING pc=0x000000000394d1a8 sp=0x000000000259b960
+Event: 7.374 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259b900 mode 2
+Event: 7.375 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind
+Event: 7.375 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind done
+Event: 7.376 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind$1
+Event: 7.376 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind$1 done
+Event: 7.376 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind$2
+Event: 7.376 loading class com/sun/tools/javac/comp/Flow$BaseAnalyzer$JumpKind$2 done
+Event: 7.383 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffde fr.pc=0x0000000003bdea80
+Event: 7.384 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdea80 sp=0x000000000259c2b0
+Event: 7.384 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259c2b8 mode 2
+Event: 7.384 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003bdeb88
+Event: 7.384 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdeb88 sp=0x000000000259c2b0
+Event: 7.384 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259c2b8 mode 2
+Event: 7.384 Thread 0x0000000018245000 flushing nmethod 0x0000000002be8610
+Event: 7.384 Thread 0x0000000018245000 flushing nmethod 0x0000000002bf5090
+Event: 7.384 Thread 0x0000000018245000 flushing nmethod 0x0000000002c12b50
+Event: 7.384 Thread 0x0000000018245000 flushing nmethod 0x0000000002c23450
+Event: 7.384 Thread 0x0000000018245000 flushing nmethod 0x0000000002c69050
+Event: 7.384 loading class com/sun/tools/javac/code/Types$Rewriter
+Event: 7.384 loading class com/sun/tools/javac/code/Types$Rewriter done
+Event: 7.385 loading class com/sun/tools/javac/code/Types$Adapter
+Event: 7.385 loading class com/sun/tools/javac/code/Types$Adapter done
+Event: 7.387 Thread 0x000000001825b000 flushing nmethod 0x0000000002d09b10
+Event: 7.388 Thread 0x0000000018245000 flushing nmethod 0x0000000002e3bdd0
+Event: 7.389 Thread 0x000000001825b000 flushing nmethod 0x0000000002f539d0
+Event: 7.390 Thread 0x000000001825b000 flushing nmethod 0x0000000002ffa1d0
+Event: 7.390 Thread 0x000000001825b000 flushing nmethod 0x0000000002ffb1d0
+Event: 7.392 Thread 0x000000001825b000 flushing nmethod 0x00000000033c9c50
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036c77d0
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036c7e10
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036c8810
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036c8f90
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036e51d0
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000036e7310
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x0000000003711a50
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x000000000371ed90
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037221d0
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x0000000003774d50
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037bad50
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037bd350
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037c90d0
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037d5c50
+Event: 7.395 Thread 0x000000001825b000 flushing nmethod 0x00000000037d60d0
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037dcbd0
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037dd290
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037e0a90
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037e4a90
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037e7490
+Event: 7.396 Thread 0x000000001825b000 flushing nmethod 0x00000000037e7e90
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037e87d0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037eed90
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037ef110
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037ef750
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037efad0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000037f8a10
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003800110
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003800cd0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003807b10
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003807e50
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003808310
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003811350
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000038129d0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003813cd0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x00000000038149d0
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003870850
+Event: 7.397 Thread 0x0000000018247800 flushing nmethod 0x0000000003873450
+Event: 7.413 Executing VM operation: ForceSafepoint
+Event: 7.413 Executing VM operation: ForceSafepoint done
+Event: 7.413 Thread 0x000000001825b000 flushing nmethod 0x0000000002c12150
+Event: 7.414 Thread 0x000000001825b000 flushing nmethod 0x0000000002e04190
+Event: 7.415 Thread 0x000000001825b000 flushing nmethod 0x0000000002eb1c50
+Event: 7.420 loading class com/sun/tools/javac/comp/Lower$1Patcher
+Event: 7.420 loading class com/sun/tools/javac/comp/Lower$1Patcher done
+Event: 7.420 Thread 0x0000000018245000 flushing nmethod 0x000000000322e590
+Event: 7.422 Thread 0x000000001825b000 flushing nmethod 0x00000000036cf950
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037238d0
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x0000000003778190
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x0000000003789f10
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037a4b10
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037bce10
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037d7c50
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037db850
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037dc4d0
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037dd850
+Event: 7.423 Thread 0x000000001825b000 flushing nmethod 0x00000000037e2350
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x00000000037ee790
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x00000000037f4a50
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x00000000037fbd90
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x00000000038031d0
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x0000000003806d50
+Event: 7.424 Thread 0x000000001825b000 flushing nmethod 0x0000000003808750
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003808e90
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003809550
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003811690
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038120d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003813410
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003814550
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003818350
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038196d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000381b4d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000383e590
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000383f3d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000383f750
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038420d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003842f50
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003844e90
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003846450
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000384d1d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003870d10
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003871150
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003871590
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003872590
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038730d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003876d90
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003877950
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038790d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038794d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000387b150
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000387b790
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000387c5d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000387cd90
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003880690
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003880d50
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003885390
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003885f10
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038885d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000388c790
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x000000000388d5d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x0000000003891490
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038a42d0
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038a4710
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038a5c50
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038a6d10
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038b2910
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038b3c90
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038b4510
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038b4950
+Event: 7.425 Thread 0x000000001825b000 flushing nmethod 0x00000000038b6210
+Event: 7.440 loading class com/sun/tools/javac/comp/Check$9
+Event: 7.440 loading class com/sun/tools/javac/comp/Check$9 done
+Event: 7.440 loading class com/sun/tools/javac/util/MandatoryWarningHandler$DeferredDiagnosticKind
+Event: 7.441 loading class com/sun/tools/javac/util/MandatoryWarningHandler$DeferredDiagnosticKind done
+Event: 7.444 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x000000000399eaac
+Event: 7.444 Thread 0x0000000002a18000 DEOPT PACKING pc=0x000000000399eaac sp=0x000000000259b6f0
+Event: 7.444 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259b698 mode 2
+Event: 7.445 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x000000000399eaac
+Event: 7.445 Thread 0x0000000002a18000 DEOPT PACKING pc=0x000000000399eaac sp=0x000000000259ba10
+Event: 7.445 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259b9b8 mode 2
+Event: 7.445 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x000000000399eaac
+Event: 7.445 Thread 0x0000000002a18000 DEOPT PACKING pc=0x000000000399eaac sp=0x000000000259b6f0
+Event: 7.445 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259b698 mode 2
+Event: 7.446 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x000000000399eaac
+Event: 7.446 Thread 0x0000000002a18000 DEOPT PACKING pc=0x000000000399eaac sp=0x000000000259ba10
+Event: 7.446 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259b9b8 mode 2
+Event: 7.461 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000000003bdc13c
+Event: 7.461 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdc13c sp=0x000000000259d130
+Event: 7.461 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259d0c0 mode 2
+Event: 7.461 loading class com/sun/tools/javac/comp/Resolve$12$1
+Event: 7.461 loading class com/sun/tools/javac/comp/Resolve$12$1 done
+Event: 7.462 loading class com/sun/tools/javac/comp/Attr$5
+Event: 7.462 loading class com/sun/tools/javac/comp/Attr$5 done
+Event: 7.531 Executing VM operation: ForceSafepoint
+Event: 7.531 Executing VM operation: ForceSafepoint done
+Event: 7.560 loading class com/sun/tools/javac/comp/LambdaToMethod$1LambdaBodyTranslator
+Event: 7.560 loading class com/sun/tools/javac/comp/LambdaToMethod$1LambdaBodyTranslator done
+Event: 7.565 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000000003bdc13c
+Event: 7.565 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdc13c sp=0x000000000259cdd0
+Event: 7.565 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259cd60 mode 2
+Event: 7.567 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000000003bdc13c
+Event: 7.567 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdc13c sp=0x000000000259cdd0
+Event: 7.567 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259cd60 mode 2
+Event: 7.574 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000000003bdc13c
+Event: 7.575 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bdc13c sp=0x000000000259cdd0
+Event: 7.575 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259cd60 mode 2
+Event: 7.581 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000003bb7553 sp=0x000000000259b610
+Event: 7.581 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1a0d0 sp=0x000000000259b370 mode 0
+Event: 7.594 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00000000038806c8
+Event: 7.594 Thread 0x0000000002a18000 DEOPT PACKING pc=0x00000000038806c8 sp=0x000000000259d290
+Event: 7.594 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259d280 mode 2
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00000000038806c8
+Event: 7.596 Thread 0x0000000002a18000 DEOPT PACKING pc=0x00000000038806c8 sp=0x000000000259a960
+Event: 7.596 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259a950 mode 2
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00000000038806c8
+Event: 7.596 Thread 0x0000000002a18000 DEOPT PACKING pc=0x00000000038806c8 sp=0x000000000259a960
+Event: 7.596 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259a950 mode 2
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00000000038806c8
+Event: 7.596 Thread 0x0000000002a18000 DEOPT PACKING pc=0x00000000038806c8 sp=0x000000000259a960
+Event: 7.596 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259a950 mode 2
+Event: 7.596 Thread 0x0000000002a18000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000002e3c1d8
+Event: 7.596 Thread 0x0000000002a18000 DEOPT PACKING pc=0x0000000002e3c1d8 sp=0x000000000259a690
+Event: 7.596 Thread 0x0000000002a18000 DEOPT UNPACKING pc=0x0000000002b1807b sp=0x000000000259a638 mode 2
+
+
+Dynamic libraries:
+0x00007ff7df160000 - 0x00007ff7df1a9000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\bin\java.exe
+0x00007fffc7c60000 - 0x00007fffc7e50000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fffc6dd0000 - 0x00007fffc6e82000 	C:\Windows\System32\KERNEL32.DLL
+0x00007fffc5690000 - 0x00007fffc5933000 	C:\Windows\System32\KERNELBASE.dll
+0x00007fffc64e0000 - 0x00007fffc6583000 	C:\Windows\System32\ADVAPI32.dll
+0x00007fffc6880000 - 0x00007fffc691e000 	C:\Windows\System32\msvcrt.dll
+0x00007fffc73f0000 - 0x00007fffc7487000 	C:\Windows\System32\sechost.dll
+0x00007fffc6c00000 - 0x00007fffc6d20000 	C:\Windows\System32\RPCRT4.dll
+0x00007fffc6990000 - 0x00007fffc6b24000 	C:\Windows\System32\USER32.dll
+0x00007fffc5ce0000 - 0x00007fffc5d01000 	C:\Windows\System32\win32u.dll
+0x00007fffc78e0000 - 0x00007fffc7906000 	C:\Windows\System32\GDI32.dll
+0x00007fffc4d40000 - 0x00007fffc4ed4000 	C:\Windows\System32\gdi32full.dll
+0x00007fffc5b90000 - 0x00007fffc5c2e000 	C:\Windows\System32\msvcp_win.dll
+0x00007fffc5960000 - 0x00007fffc5a5a000 	C:\Windows\System32\ucrtbase.dll
+0x00007fffb6bd0000 - 0x00007fffb6e55000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.476_none_e6c4b11b130f2595\COMCTL32.dll
+0x00007fffc7490000 - 0x00007fffc77c6000 	C:\Windows\System32\combase.dll
+0x00007fffc5a60000 - 0x00007fffc5ae0000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007fffc6590000 - 0x00007fffc65be000 	C:\Windows\System32\IMM32.DLL
+0x0000000065690000 - 0x0000000065762000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\msvcr100.dll
+0x0000000065770000 - 0x000000006602b000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\server\jvm.dll
+0x00007fffc6e90000 - 0x00007fffc6e98000 	C:\Windows\System32\PSAPI.DLL
+0x00007fffc0290000 - 0x00007fffc0299000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fffc2aa0000 - 0x00007fffc2ac4000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007fffc6920000 - 0x00007fffc698f000 	C:\Windows\System32\WS2_32.dll
+0x00007fffbda50000 - 0x00007fffbda5a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007fffc2620000 - 0x00007fffc264d000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007fffc5ae0000 - 0x00007fffc5b2a000 	C:\Windows\System32\cfgmgr32.dll
+0x00007fffbec20000 - 0x00007fffbec2f000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\verify.dll
+0x00007fffb61b0000 - 0x00007fffb61d9000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\java.dll
+0x00007fffa72d0000 - 0x00007fffa72e6000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\zip.dll
+0x00007fffc5d10000 - 0x00007fffc63f5000 	C:\Windows\System32\SHELL32.dll
+0x00007fffc6630000 - 0x00007fffc66d9000 	C:\Windows\System32\shcore.dll
+0x00007fffc4f10000 - 0x00007fffc568e000 	C:\Windows\System32\windows.storage.dll
+0x00007fffc4b60000 - 0x00007fffc4b7f000 	C:\Windows\System32\profapi.dll
+0x00007fffc4b80000 - 0x00007fffc4bca000 	C:\Windows\System32\powrprof.dll
+0x00007fffc4b30000 - 0x00007fffc4b40000 	C:\Windows\System32\UMPDC.dll
+0x00007fffc6820000 - 0x00007fffc6872000 	C:\Windows\System32\shlwapi.dll
+0x00007fffc4bd0000 - 0x00007fffc4be1000 	C:\Windows\System32\kernel.appcore.dll
+0x00007fffc5940000 - 0x00007fffc5957000 	C:\Windows\System32\cryptsp.dll
+0x00007fffa7250000 - 0x00007fffa726a000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\net.dll
+0x00007fffc43a0000 - 0x00007fffc4407000 	C:\Windows\system32\mswsock.dll
+0x00007fff99210000 - 0x00007fff99221000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\nio.dll
+
+VM Arguments:
+jvm_args: -Dclassworlds.conf=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven\bin\m2.conf -Dmaven.home=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven -Dmaven.multiModuleProjectDirectory=C:\Users\MB-207\Documents\NetBeansProjects\JavaWeb0829 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -Dnetbeans.deploy=true -Dnetbeans.deploy.clientUrlPart=/mytag/tag_demo2.jsp -Dmaven.ext.class.path=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 package
+java_class_path (initial): C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven\boot\plexus-classworlds-2.5.2.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1
+PATH=C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\MB-207\AppData\Local\Microsoft\WindowsApps;
+USERNAME=MB-teacher
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 18362 (10.0.18362.329)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, tsc, tscinvbit
+
+Memory: 4k page, physical 8345568k(1426968k free), swap 8345568k(6360k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.232-b09) for windows-amd64 JRE (1.8.0_232-b09), built on Oct 20 2019 21:49:19 by "VssAdministrator" with MS VC++ 10.0 (VS2010)
+
+time: Sat Oct 31 14:35:20 2020
+timezone: 台北標準時間
+elapsed time: 7 seconds (0d 0h 0m 7s)
+
