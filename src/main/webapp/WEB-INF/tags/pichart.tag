@@ -1,4 +1,5 @@
 <%@tag description="put the tag description here" pageEncoding="UTF-8"%>
+<%@attribute name="mobile" required="true" rtexprvalue="true" %>
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -12,7 +13,7 @@
           ['Task', 'Hours per Day'],
           ['工作', 8],
           ['飲食', 2],
-          ['手機', 5],
+          ['手機', ${mobile}],
           ['電視', 2],
           ['睡覺', 7]
         ]);
