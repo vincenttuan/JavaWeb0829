@@ -4,48 +4,49 @@
   <short-name>mytld</short-name>
   <uri>/tlds/mytld</uri>
   <tag>
-      <name>hello</name>
-      <tag-class>com.web.tag.HelloTag</tag-class>
-      <body-content>empty</body-content>
-      <attribute>
-          <name>name</name>
-          <required>false</required>
-          <rtexprvalue>true</rtexprvalue>
-      </attribute>
+    <name>hello</name>
+    <tag-class>com.web.tag.HelloTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
   <tag>
-      <name>bmi</name>
-      <tag-class>com.web.tag.BmiTag</tag-class>
-      <body-content>empty</body-content>
-      <attribute>
-          <name>h</name>
-          <required>true</required>
-          <rtexprvalue>true</rtexprvalue>
-      </attribute>
-      <attribute>
-          <name>w</name>
-          <required>true</required>
-          <rtexprvalue>true</rtexprvalue>
-      </attribute>
+    <name>bmi</name>
+    <tag-class>com.web.tag.BmiTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>h</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>w</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
   <tag>
-      <name>lotto</name>
-      <tag-class>com.web.tag.LottoTag</tag-class>
-      <body-content>JSP</body-content>
-      <attribute>
-          <name>count</name>
-          <required>true</required>
-          <rtexprvalue>true</rtexprvalue>
-      </attribute>
+    <name>lotto</name>
+    <tag-class>com.web.tag.LottoTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>count</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
   <tag>
-      <name>search</name>
-      <tag-class>com.web.tag.SearchTag</tag-class>
-      <body-content>JSP</body-content>
-      <attribute>
-          <name>key</name>
-          <required>true</required>
-          <rtexprvalue>true</rtexprvalue>
-      </attribute>
+    <name>search</name>
+    <tag-class>com.web.tag.SearchTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>key</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
+
 </taglib>
