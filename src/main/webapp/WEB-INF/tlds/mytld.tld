@@ -7,5 +7,10 @@
       <name>hello</name>
       <tag-class>com.web.tag.HelloTag</tag-class>
       <body-content>empty</body-content>
+      <attribute>
+          <name>name</name>
+          <required>false</required>
+          <rtexprvalue>true</rtexprvalue>
+      </attribute>
   </tag>
 </taglib>

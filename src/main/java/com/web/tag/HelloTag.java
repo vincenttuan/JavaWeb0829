@@ -42,7 +42,9 @@ public class HelloTag implements Tag {
         JspWriter out = pageContext.getOut();
         try {
             out.print("Hello ");
-            out.print(name + " ");
+            if(name != null) {
+                out.print(name + " ");
+            }
             out.print(new Date());
         } catch (IOException ex) {
             
