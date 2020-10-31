@@ -11,6 +11,9 @@
             <t:hello /><p />
             <t:hello name="Vincent" /><p />
             <t:bmi h="170" w="60" /><p />
+            <t:lotto count="5">
+                10
+            </t:lotto>
         </h1>
     </body>
 </html>

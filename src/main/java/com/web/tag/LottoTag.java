@@ -25,6 +25,14 @@ public class LottoTag implements IterationTag {
         return parentTag;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     @Override
     public int doStartTag() throws JspException {
         return Tag.EVAL_BODY_INCLUDE;
@@ -32,7 +40,7 @@ public class LottoTag implements IterationTag {
     
     @Override
     public int doAfterBody() throws JspException {
-        return count-- > 0 ? IterationTag.EVAL_BODY_AGAIN : Tag.SKIP_BODY;
+        return --count > 0 ? IterationTag.EVAL_BODY_AGAIN : Tag.SKIP_BODY;
     }
 
     @Override
