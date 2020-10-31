@@ -1,5 +1,6 @@
 package com.web.websocket;
 
+import java.util.Date;
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -30,6 +31,15 @@ public class HelloServer {
         if(sessions != null) {
             sessions.remove(session);
             sendAll("哇哩勒~ " + session.getId() + " 離開了!");
+        }
+    }
+    
+    private void sendAll(String message) {
+        if(sessions != null) {
+            for(Session session : sessions) {
+                String time = "<font color='#aaaaaa' size='1'>" + new Date() + "</font>";
+                session.getAsyncRemote().sendText(message + " " + time);
+            }
         }
     }
 }
