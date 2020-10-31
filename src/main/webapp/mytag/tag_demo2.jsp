@@ -19,6 +19,7 @@
             she sell sea shell on the sea shore
             </t:search><p />
             <t:area r="15" /><p />
+            <t:add x="10" y="20" z="30" ... /><p />
         </h1>
     </body>
 </html>
